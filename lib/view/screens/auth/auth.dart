@@ -3,8 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/view/style/colors.dart';
 import 'package:fresh_food_ui/view/style/constants.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key key}) : super(key: key);
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({
+    Key key,
+    @required this.title,
+    @required this.form,
+    @required this.action,
+  }) : super(key: key);
+
+  final String title;
+  final Widget form;
+  final Widget action;
 
   @override
   Widget build(BuildContext context) {
@@ -14,35 +23,24 @@ class LoginScreen extends StatelessWidget {
           children: [
             Container(
               height: 707.h,
-              decoration: KContainerBottomShadowDecoration,
+              decoration: kContainerBottomShadowDecoration,
               child: Column(
                 children: [
                   SizedBox(height: 141.h),
                   Text(
-                    'Sign In',
+                    title,
                     style: Theme.of(context)
                         .textTheme
                         .headline5
                         .apply(color: AppColors.green),
                   ),
                   SizedBox(height: 111.h),
-                  LoginForm(),
+                  form,
                 ],
               ),
             ),
             SizedBox(height: 38.h),
-            InkWell(
-              onTap: () {
-                // go to create account screen.
-              },
-              child: Text(
-                "CREATE ACCOUNT",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .apply(color: AppColors.medium_grey, fontWeightDelta: 7),
-              ),
-            ),
+            action,
           ],
         ),
       ),
@@ -50,14 +48,21 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({Key key}) : super(key: key);
+class AuthForm extends StatefulWidget {
+  const AuthForm({
+    Key key,
+    @required this.fields,
+    @required this.buttonLabel,
+  }) : super(key: key);
+
+  final String buttonLabel;
+  final Column fields;
 
   @override
-  _LoginFormState createState() => _LoginFormState();
+  _AuthFormState createState() => _AuthFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _AuthFormState extends State<AuthForm> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -68,28 +73,16 @@ class _LoginFormState extends State<LoginForm> {
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           children: [
-            CustomTextFormField(hintText: "Email"),
-            SizedBox(height: 15.h),
-            CustomTextFormField(hintText: "Password"),
-            SizedBox(height: 24.h),
-            Text(
-              "Forgot password?",
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .apply(color: AppColors.medium_grey),
-            ),
-            SizedBox(height: 153.h),
+            widget.fields,
             CustomButtom(
-              label: "SIGN IN",
+              label: widget.buttonLabel,
               onTap: () {
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState.validate()) {
                   // If the form is valid, display a snackbar. In the real world,
                   // you'd often call a server or save the information in a database.
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Processing Data')),
-                  );
+
+                  // go to onboarding screen.
                 }
               },
             ),

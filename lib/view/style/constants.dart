@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-BoxDecoration KContainerBottomShadowDecoration = BoxDecoration(
+BoxDecoration kContainerBottomShadowDecoration = BoxDecoration(
   color: Colors.white,
   borderRadius: BorderRadius.circular(36),
   boxShadow: [

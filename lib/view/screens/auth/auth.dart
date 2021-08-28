@@ -23,7 +23,7 @@ class AuthScreen extends StatelessWidget {
           children: [
             Container(
               height: 707.h,
-              decoration: kContainerBottomShadowDecoration,
+              decoration: kContainerBottomShadowDecoration(context),
               child: Column(
                 children: [
                   SizedBox(height: 141.h),
@@ -105,16 +105,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
         hintText: hintText,
-        hintStyle:
-            Theme.of(context).textTheme.bodyText1.apply(color: AppColors.medium_grey),
-        filled: true,
-        fillColor: AppColors.lighter_grey,
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(8),
-        ),
       ),
       // The validator receives the text that the user has entered.
       // validator: (value) {

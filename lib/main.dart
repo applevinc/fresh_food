@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/view/screens/auth/sign_in.dart';
+import 'package:fresh_food_ui/view/style/theme.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
+    runApp(new MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +19,8 @@ class MyApp extends StatelessWidget {
       builder: () => MaterialApp(
         title: 'Fresh Food UI',
         debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         home: SignInScreen(),
       ),
     );

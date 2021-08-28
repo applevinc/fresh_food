@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/view/screens/onboarding/onboarding.dart';
 import 'package:fresh_food_ui/view/style/colors.dart';
 import 'package:fresh_food_ui/view/style/constants.dart';
 
@@ -83,6 +84,8 @@ class _AuthFormState extends State<AuthForm> {
                   // you'd often call a server or save the information in a database.
 
                   // go to onboarding screen.
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OnboardingScreen()));
                 }
               },
             ),

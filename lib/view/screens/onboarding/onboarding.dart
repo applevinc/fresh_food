@@ -18,7 +18,7 @@ class OnboardingScreen extends StatelessWidget {
       ],
       builder: (context, child) {
         var pageNotifier = context.watch<PageNotifier>();
-        var lastOnboardingItemIndex = _onboardingList.length - 1;
+        var lastOnboardingItemIndex = pageNotifier.onboardingList.length;
 
         return Scaffold(
           body: Column(
@@ -103,19 +103,20 @@ class _OnboardingPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var pageNotifier = context.watch<PageNotifier>();
-    var lastOnboardingItemIndex = _onboardingList.length - 1;
 
     return SizedBox(
       height: 642.h,
       child: PageView.builder(
+        physics: BouncingScrollPhysics(),
         controller: pageNotifier.pageController,
-        itemCount: _onboardingList.length,
+        itemCount: pageNotifier.onboardingList.length + 1,
         itemBuilder: (context, index) {
-          var onboardingItem = _onboardingList[index];
+          if (index < pageNotifier.onboardingList.length) {
+            var onboardingItem = pageNotifier.onboardingList[index];
+            return _OnboardingPageviewItem(onboardingItem: onboardingItem);
+          }
 
-          return (pageNotifier.pageNo == lastOnboardingItemIndex)
-              ? _SelectRecipePrefWidget()
-              : _OnboardingPageviewItem(onboardingItem: onboardingItem);
+          return _SelectRecipePrefWidget();
         },
         onPageChanged: (value) {
           pageNotifier.nextPage(value);
@@ -162,6 +163,18 @@ class PageNotifier extends ChangeNotifier {
   int pageNo = 0;
   PageController pageController = PageController(initialPage: 0);
 
+  final onboardingList = [
+    _OnboardingModel(
+      img: AppImages.onboarding_1,
+      description: "Quickly search and addhealthy foods to your cart",
+    ),
+    _OnboardingModel(
+      img: AppImages.onboarding_2,
+      description:
+          "With one click you can add every ingredient for a recipe to your cart",
+    ),
+  ];
+
   void nextPage(int index) {
     pageNo = index;
     notifyListeners();
@@ -169,10 +182,52 @@ class PageNotifier extends ChangeNotifier {
 
   void skip() {
     pageController.jumpToPage(
-      _onboardingList.length - 1,
+      onboardingList.length,
     );
     notifyListeners();
   }
+}
+
+class _PageIndicator extends StatelessWidget {
+  const _PageIndicator({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var pageNotifier = context.watch<PageNotifier>();
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        pageNotifier.onboardingList.length + 1,
+        (index) => AnimatedContainer(
+          duration: Duration(milliseconds: 100),
+          margin: EdgeInsets.symmetric(horizontal: 10.w),
+          height: 10.h,
+          width: 10.w,
+          decoration: BoxDecoration(
+            color: (index == pageNotifier.pageNo)
+                ? AppColors.medium_grey
+                : Color(0x4da6b8c9),
+            shape: BoxShape.circle,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _OnboardingModel {
+  final String img;
+  final String description;
+  final Widget widget;
+
+  _OnboardingModel({
+    this.img,
+    this.description,
+    this.widget,
+  });
 }
 
 class _SelectRecipePrefWidget extends StatelessWidget {
@@ -263,57 +318,3 @@ class RecipeNotifier extends ChangeNotifier {
     }
   }
 }
-
-class _PageIndicator extends StatelessWidget {
-  const _PageIndicator({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var pageNotifier = context.watch<PageNotifier>();
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        _onboardingList.length,
-        (index) => AnimatedContainer(
-          duration: Duration(milliseconds: 100),
-          margin: EdgeInsets.symmetric(horizontal: 10.w),
-          height: 10.h,
-          width: 10.w,
-          decoration: BoxDecoration(
-            color: (index == pageNotifier.pageNo)
-                ? AppColors.medium_grey
-                : Color(0x4da6b8c9),
-            shape: BoxShape.circle,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _OnboardingModel {
-  final String img;
-  final String description;
-  final Widget widget;
-
-  _OnboardingModel({
-    this.img,
-    this.description,
-    this.widget,
-  });
-}
-
-final _onboardingList = [
-  _OnboardingModel(
-    img: AppImages.onboarding_1,
-    description: "Quickly search and addhealthy foods to your cart",
-  ),
-  _OnboardingModel(
-    img: AppImages.onboarding_2,
-    description: "With one click you can add every ingredient for a recipe to your cart",
-  ),
-  _SelectRecipePrefWidget(),
-];

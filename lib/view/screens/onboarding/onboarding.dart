@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/view/images.dart';
+import 'package:fresh_food_ui/view/screens/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:fresh_food_ui/view/style/colors.dart';
 import 'package:fresh_food_ui/view/style/constants.dart';
 import 'package:fresh_food_ui/view/widgets/button.dart';
@@ -58,7 +59,10 @@ class _GetStarted extends StatelessWidget {
           SizedBox(height: 30.h),
           CustomButtom(
             label: "GET STARTED",
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => BottomNavBar()));
+            },
           ),
           SizedBox(height: 30.h),
         ],

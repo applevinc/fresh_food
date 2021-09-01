@@ -8,10 +8,11 @@ class AppTheme {
       scaffoldBackgroundColor: Colors.white,
       brightness: Brightness.light,
       accentColor: AppColors.green,
+      highlightColor: Colors.transparent,
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          brightness: Brightness.light,
+          brightness: Brightness.dark,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
       textTheme: TextTheme(
           headline4: TextStyle(
@@ -68,6 +69,7 @@ class AppTheme {
       scaffoldBackgroundColor: AppColors.darker_grey,
       brightness: Brightness.dark,
       accentColor: AppColors.green,
+      highlightColor: Colors.transparent,
       appBarTheme: AppBarTheme(
           backgroundColor: AppColors.darker_grey,
           elevation: 0.0,

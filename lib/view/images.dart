@@ -1,6 +1,7 @@
 class AppImages {
   static const String onboarding_1 = "assets/images/onboarding_1.png";
   static const String onboarding_2 = "assets/images/onboarding_2.png";
+  static const String loading = "assets/images/loading.png";
 }
 
 class AppIcons {
@@ -12,6 +13,7 @@ class AppIcons {
   static const String search = "assets/icons/icon-search.png";
   static const String settings = "assets/icons/icon-settings.png";
   static const String store = "assets/icons/icon-store.png";
+  static const String voice = "assets/icons/icon-voice.png";
 }
 
 class FruitImages {

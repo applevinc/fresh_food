@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/view/images.dart';
+import 'package:fresh_food_ui/view/screens/search/search.dart';
 import 'package:fresh_food_ui/view/style/colors.dart';
 import 'package:fresh_food_ui/view/style/constants.dart';
 import 'package:fresh_food_ui/view/widgets/appbar.dart';
@@ -16,6 +17,8 @@ class StoreScreen extends StatelessWidget {
         actionIcon: AppIcons.search,
         actionCallback: () {
           // got to search screen
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => SearchScreen()));
         },
       ),
       body: SingleChildScrollView(
@@ -30,8 +33,6 @@ class StoreScreen extends StatelessWidget {
     );
   }
 }
-
-
 
 class _FeatureImageContainer extends StatelessWidget {
   const _FeatureImageContainer({

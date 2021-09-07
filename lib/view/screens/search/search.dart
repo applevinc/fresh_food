@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/view/images.dart';
+import 'package:fresh_food_ui/view/style/colors.dart';
 import 'package:fresh_food_ui/view/style/constants.dart';
 import 'package:fresh_food_ui/view/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,16 +16,20 @@ class SearchScreen extends StatelessWidget {
         actionIcon: AppIcons.close,
         actionCallback: () {
           // pop search screen
+          Navigator.pop(context);
         },
       ),
       body: Container(
         height: 65.h,
         decoration: kContainerBottomShadowDecoration(context),
+        padding: EdgeInsets.symmetric(horizontal: 30),
         child: TextField(
           decoration: InputDecoration(
-            prefixIcon: ImageIcon(AssetImage(AppIcons.close)),
+            prefixIcon: ImageIcon(AssetImage(AppIcons.search)),
             hintText: "What are you searching for?",
-            suffixIcon: ImageIcon(AssetImage(AppIcons.voice), size: 30.sp),
+            fillColor: Colors.transparent,
+            
+            suffixIcon: Icon(Icons.mic, color: AppColors.green),
           ),
         ),
       ),

@@ -16,7 +16,7 @@ class AppIcons {
   static const String voice = "assets/icons/icon-voice.png";
 }
 
-class FruitImages {
+class ProductImages {
   static const String banana = "assets/fruits_images/banana.png";
   static const String broccoli = "assets/fruits_images/broccoli.png";
   static const String orange = "assets/fruits_images/orange.png";

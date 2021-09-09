@@ -111,6 +111,11 @@ class AppTheme {
             fontSize: 30.sp,
             fontWeight: FontWeight.w400,
           ),
+          headline5: TextStyle(
+            color: AppColors.m_medium_grey,
+            fontSize: 24.sp,
+            fontWeight: FontWeight.w400,
+          ),
           headline6: TextStyle(
             color: AppColors.m_medium_grey,
             fontSize: 20.sp,

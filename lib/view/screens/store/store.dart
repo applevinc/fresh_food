@@ -47,7 +47,7 @@ class _FeatureImageContainer extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            FruitImages.broccoli,
+            ProductImages.broccoli,
             height: 293.h,
             width: 293.w,
           ),
@@ -158,17 +158,17 @@ class _Fruit {
 var _fruits = <_Fruit>[
   _Fruit(
     name: "Berries",
-    img: FruitImages.strawberry,
+    img: ProductImages.strawberry,
     bgColor: Color(0xffdd4040),
   ),
   _Fruit(
     name: "Citrus",
-    img: FruitImages.orange,
+    img: ProductImages.orange,
     bgColor: Color(0xffffa700),
   ),
   _Fruit(
     name: "Banana",
-    img: FruitImages.banana,
+    img: ProductImages.banana,
     bgColor: Color(0xffffd958),
   ),
 ];

@@ -1,6 +1,8 @@
 class AppImages {
   static const String onboarding_1 = "assets/images/onboarding_1.png";
-  static const String onboarding_2 = "assets/images/onboarding_2.png";
+  static const String onboarding_1_dark = "assets/images/onboarding_1_dark.png";
+  static const String onboarding_2 = "assets/images/onboarding_2_dark.png";
+  static const String onboarding_2_dark = "assets/images/onboarding_2.png";
   static const String loading = "assets/images/loading.png";
 }
 
@@ -17,8 +19,11 @@ class AppIcons {
 }
 
 class ProductImages {
-  static const String banana = "assets/fruits_images/banana.png";
-  static const String broccoli = "assets/fruits_images/broccoli.png";
-  static const String orange = "assets/fruits_images/orange.png";
-  static const String strawberry = "assets/fruits_images/strawberry.png";
+  static const String banana = "assets/products/banana.png";
+  static const String broccoli = "assets/products/broccoli.png";
+  static const String orange = "assets/products/orange.png";
+  static const String strawberry = "assets/products/strawberry.png";
+  static const String red_pepper = "assets/products/pepper.png";
+  static const String kale = "assets/products/kale.png";
+  static const String banana_single = "assets/products/path.png";
 }

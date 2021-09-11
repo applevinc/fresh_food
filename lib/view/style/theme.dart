@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/view/style/colors.dart';
 
 class AppTheme {
+  
   static ThemeData get lightTheme {
     return ThemeData(
       scaffoldBackgroundColor: Colors.white,

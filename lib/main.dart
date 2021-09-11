@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       builder: () => MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (context) => SearchNotifier(),
-          )
+          ChangeNotifierProvider(create: (context) => SearchNotifier()),
         ],
         child: MaterialApp(
           title: 'Fresh Food UI',

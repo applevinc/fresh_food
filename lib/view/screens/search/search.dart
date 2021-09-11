@@ -49,31 +49,60 @@ class SearchScreen extends StatelessWidget {
               },
             ),
           ),
-          SizedBox(height: 30.h),
           (searchProvider.searchStatus != SearchStatus.results)
               ? SizedBox()
-              : Text('Results'),
+              : ResultsGridView(),
         ],
       ),
     );
   }
 }
 
-// GridView.builder(
-//                   gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-//                       maxCrossAxisExtent: 200,
-//                       childAspectRatio: 3 / 2,
-//                       crossAxisSpacing: 20,
-//                       mainAxisSpacing: 20),
-//                   itemCount: searchProvider.results.length,
-//                   itemBuilder: (BuildContext ctx, index) {
-//                     return Container(
-//                       alignment: Alignment.center,
-//                       child: Text(searchProvider.results[index].name),
-//                       decoration: BoxDecoration(
-//                           color: Colors.amber, borderRadius: BorderRadius.circular(15)),
-//                     );
-//                   })
+class ResultsGridView extends StatelessWidget {
+  const ResultsGridView({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final searchProvider = context.watch<SearchNotifier>();
+
+    return Expanded(
+      child: GridView.builder(
+          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 30.h),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 150.w,
+              childAspectRatio: 150.w / 220.h,
+              crossAxisSpacing: 15.w,
+              mainAxisSpacing: 15.h),
+          itemCount: searchProvider.results.length,
+          itemBuilder: (_, index) {
+            final product = context.watch<SearchNotifier>().results[index];
+
+            return Container(
+              height: 183.h,
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(top: 24.h, right: 18.w, left: 18.w, bottom: 11.h),
+              decoration: BoxDecoration(
+                  color: (isDarkMode(context)) ? Colors.white : AppColors.darker_grey,
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                  boxShadow: [
+                    BoxShadow(
+                        color: const Color(0x12000000),
+                        offset: Offset(0, 5),
+                        blurRadius: 30,
+                        spreadRadius: 0)
+                  ]),
+              child: Column(
+                children: [
+                  Image.asset(product.img),
+                  SizedBox(height: 13.h),
+                  Text(product.name),
+                ],
+              ),
+            );
+          }),
+    );
+  }
+}
 
 class _LoadingScreen extends StatefulWidget {
   const _LoadingScreen({Key key, this.query}) : super(key: key);

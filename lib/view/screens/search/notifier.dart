@@ -23,6 +23,8 @@ class SearchNotifier extends ChangeNotifier {
 
   List<Product> _results = [
     Product(name: "Brocolli", img: ProductImages.broccoli),
+    Product(name: "Kale", img: ProductImages.kale),
+    Product(name: "Red Pepper", img: ProductImages.red_pepper),
     Product(name: "Strawberries", img: ProductImages.strawberry),
   ];
   List<Product> get results => _results;

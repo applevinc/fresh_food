@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/constants.dart';
+import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/onboarding/view/onboarding_view.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
-import 'package:fresh_food_ui/src/style/constants.dart';
-import 'package:fresh_food_ui/src/widgets/button.dart';
+
 
 
 class AuthScreen extends StatelessWidget {

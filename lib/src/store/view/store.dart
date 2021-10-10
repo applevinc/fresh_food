@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/src/assets/icons.dart';
-import 'package:fresh_food_ui/src/assets/product_images.dart';
-import 'package:fresh_food_ui/src/search/search.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
-import 'package:fresh_food_ui/src/style/constants.dart';
-import 'package:fresh_food_ui/src/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/core/assets/icons.dart';
+import 'package:fresh_food_ui/src/core/assets/product_images.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/constants.dart';
+import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/search/view/screens/search_view.dart';
+import 'package:fresh_food_ui/src/store/data/product_list.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({Key key}) : super(key: key);
@@ -27,7 +28,7 @@ class StoreScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _FeatureImageContainer(),
-            _FruitsListView(),
+            _FruitsHorizontalListView(),
           ],
         ),
       ),
@@ -70,8 +71,8 @@ class _FeatureImageContainer extends StatelessWidget {
   }
 }
 
-class _FruitsListView extends StatelessWidget {
-  const _FruitsListView({
+class _FruitsHorizontalListView extends StatelessWidget {
+  const _FruitsHorizontalListView({
     Key key,
   }) : super(key: key);
 
@@ -83,9 +84,9 @@ class _FruitsListView extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 15.h),
-        itemCount: _fruits.length,
+        itemCount: products.length,
         itemBuilder: (context, index) {
-          var fruit = _fruits[index];
+          var fruit = products[index];
           return _FruitContainer(
             img: fruit.img,
             name: fruit.name,
@@ -144,32 +145,4 @@ class _FruitContainer extends StatelessWidget {
   }
 }
 
-class _Fruit {
-  final String img;
-  final String name;
-  final Color bgColor;
 
-  _Fruit({
-    this.img,
-    this.name,
-    this.bgColor,
-  });
-}
-
-var _fruits = <_Fruit>[
-  _Fruit(
-    name: "Berries",
-    img: ProductImages.strawberry,
-    bgColor: Color(0xffdd4040),
-  ),
-  _Fruit(
-    name: "Citrus",
-    img: ProductImages.orange,
-    bgColor: Color(0xffffa700),
-  ),
-  _Fruit(
-    name: "Banana",
-    img: ProductImages.banana,
-    bgColor: Color(0xffffd958),
-  ),
-];

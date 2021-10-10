@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/src/assets/icons.dart';
 import 'package:fresh_food_ui/src/cart/cart.dart';
+import 'package:fresh_food_ui/src/core/assets/icons.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/quick_shop/quick_shop.dart';
 import 'package:fresh_food_ui/src/recipes/recipes.dart';
 import 'package:fresh_food_ui/src/settings/settigs.dart';
-import 'package:fresh_food_ui/src/store/store.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
+import 'package:fresh_food_ui/src/store/view/store.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomNavBar extends StatefulWidget {

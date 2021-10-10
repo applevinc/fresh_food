@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/src/assets/images.dart';
+import 'package:fresh_food_ui/src/core/assets/images.dart';
 import 'package:fresh_food_ui/src/onboarding/models/onboarding.dart';
 
 class PageNotifier extends ChangeNotifier {

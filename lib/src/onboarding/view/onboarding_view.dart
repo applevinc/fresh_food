@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/constants.dart';
+import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/onboarding/models/onboarding.dart';
 import 'package:fresh_food_ui/src/onboarding/controllers/pageview_controller.dart';
 import 'package:fresh_food_ui/src/onboarding/controllers/recipe_pref_controller.dart';
 import 'package:fresh_food_ui/src/onboarding/view/select_recipe_pref_view.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
-import 'package:fresh_food_ui/src/style/constants.dart';
-import 'package:fresh_food_ui/src/widgets/button.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {

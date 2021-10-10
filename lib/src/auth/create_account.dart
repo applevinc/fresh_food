@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/auth/auth.dart';
 import 'package:fresh_food_ui/src/auth/sign_in.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
-
-
+import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class CreateAccountScreen extends StatelessWidget {
   const CreateAccountScreen({Key key}) : super(key: key);

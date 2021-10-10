@@ -1,34 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/src/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class AppTheme {
-  
   static ThemeData get lightTheme {
     return ThemeData(
       scaffoldBackgroundColor: Colors.white,
       brightness: Brightness.light,
-      accentColor: AppColors.green,
       highlightColor: Colors.transparent,
-      primarySwatch: MaterialColor(
-        0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
-        const <int, Color>{
-          50: const Color(0xffE9FAEC), //10%
-          100: const Color(0xffDDF9E1), //20%
-          200: const Color(0xffD1F7D7), //30%
-          300: const Color(0xffC4F6CC), //40%
-          400: const Color(0xffB8F4C2), //50%
-          500: const Color(0xffACF3B7), //60%
-          600: const Color(0xffA0F1AD), //70%
-          700: const Color(0xff93F0A2), //80%
-          800: const Color(0xff87EE98), //90%
-          900: const Color(0xff7BED8D), //100%
-        },
-      ),
       appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          brightness: Brightness.dark,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
       textTheme: TextTheme(
           headline4: TextStyle(
@@ -77,6 +59,23 @@ class AppTheme {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed),
+      // colorScheme: ColorScheme.fromSwatch(
+      //   primarySwatch: MaterialColor(
+      //     0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+      //     const <int, Color>{
+      //       50: const Color(0xffE9FAEC), //10%
+      //       100: const Color(0xffDDF9E1), //20%
+      //       200: const Color(0xffD1F7D7), //30%
+      //       300: const Color(0xffC4F6CC), //40%
+      //       400: const Color(0xffB8F4C2), //50%
+      //       500: const Color(0xffACF3B7), //60%
+      //       600: const Color(0xffA0F1AD), //70%
+      //       700: const Color(0xff93F0A2), //80%
+      //       800: const Color(0xff87EE98), //90%
+      //       900: const Color(0xff7BED8D), //100%
+      //     },
+      //   ),
+      // ).copyWith(secondary: AppColors.green),
     );
   }
 
@@ -84,27 +83,10 @@ class AppTheme {
     return ThemeData(
       scaffoldBackgroundColor: AppColors.darker_grey,
       brightness: Brightness.dark,
-      accentColor: AppColors.green,
       highlightColor: Colors.transparent,
-      primarySwatch: MaterialColor(
-        0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
-        const <int, Color>{
-          50: const Color(0xffE9FAEC), //10%
-          100: const Color(0xffDDF9E1), //20%
-          200: const Color(0xffD1F7D7), //30%
-          300: const Color(0xffC4F6CC), //40%
-          400: const Color(0xffB8F4C2), //50%
-          500: const Color(0xffACF3B7), //60%
-          600: const Color(0xffA0F1AD), //70%
-          700: const Color(0xff93F0A2), //80%
-          800: const Color(0xff87EE98), //90%
-          900: const Color(0xff7BED8D), //100%
-        },
-      ),
       appBarTheme: AppBarTheme(
           backgroundColor: AppColors.darker_grey,
           elevation: 0.0,
-          brightness: Brightness.dark,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
       textTheme: TextTheme(
           headline4: TextStyle(
@@ -153,6 +135,22 @@ class AppTheme {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed),
+      // colorScheme: ColorScheme.fromSwatch(
+      //     primarySwatch: MaterialColor(
+      //   0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+      //   const <int, Color>{
+      //     50: const Color(0xffE9FAEC), //10%
+      //     100: const Color(0xffDDF9E1), //20%
+      //     200: const Color(0xffD1F7D7), //30%
+      //     300: const Color(0xffC4F6CC), //40%
+      //     400: const Color(0xffB8F4C2), //50%
+      //     500: const Color(0xffACF3B7), //60%
+      //     600: const Color(0xffA0F1AD), //70%
+      //     700: const Color(0xff93F0A2), //80%
+      //     800: const Color(0xff87EE98), //90%
+      //     900: const Color(0xff7BED8D), //100%
+      //   },
+      // ),).copyWith(secondary: AppColors.green),
     );
   }
 }

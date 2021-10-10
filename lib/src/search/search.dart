@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/view/images.dart';
-import 'package:fresh_food_ui/view/screens/search/notifier.dart';
-import 'package:fresh_food_ui/view/style/colors.dart';
-import 'package:fresh_food_ui/view/style/constants.dart';
-import 'package:fresh_food_ui/view/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/assets/icons.dart';
+import 'package:fresh_food_ui/src/assets/images.dart';
+import 'package:fresh_food_ui/src/search/notifier.dart';
+import 'package:fresh_food_ui/src/style/colors.dart';
+import 'package:fresh_food_ui/src/style/constants.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/widgets/appbar.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatelessWidget {

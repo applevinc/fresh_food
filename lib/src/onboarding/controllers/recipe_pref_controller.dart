@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-
-class _RecipePref {
-  final String title;
-  bool isSelected;
-
-  _RecipePref({this.title, this.isSelected});
-}
+import 'package:fresh_food_ui/src/onboarding/models/recipe_pref.dart';
 
 class RecipeNotifier extends ChangeNotifier {
   var recipies = [
-    _RecipePref(title: "All", isSelected: false),
-    _RecipePref(title: "Vegan", isSelected: false),
-    _RecipePref(title: "Vegeterian", isSelected: false),
-    _RecipePref(title: "Paleo", isSelected: false),
-    _RecipePref(title: "Keto", isSelected: false),
-    _RecipePref(title: "Low Carb", isSelected: false),
+    RecipePref(title: "All", isSelected: false),
+    RecipePref(title: "Vegan", isSelected: false),
+    RecipePref(title: "Vegeterian", isSelected: false),
+    RecipePref(title: "Paleo", isSelected: false),
+    RecipePref(title: "Keto", isSelected: false),
+    RecipePref(title: "Low Carb", isSelected: false),
   ];
 
   void toggle(int index, bool value) {

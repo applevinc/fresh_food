@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/view/images.dart';
-
-class OnboardingModel {
-  final String img;
-  final String description;
-  final Widget widget;
-
-  OnboardingModel({
-    this.img,
-    this.description,
-    this.widget,
-  });
-}
+import 'package:fresh_food_ui/src/assets/images.dart';
+import 'package:fresh_food_ui/src/onboarding/models/onboarding.dart';
 
 class PageNotifier extends ChangeNotifier {
   int pageNo = 0;
   PageController pageController = PageController(initialPage: 0);
 
   final onboardingList = [
-    OnboardingModel(
+    Onboarding(
       img: AppImages.onboarding_1,
       description: "Quickly search and addhealthy foods to your cart",
     ),
-    OnboardingModel(
+    Onboarding(
       img: AppImages.onboarding_2,
       description:
           "With one click you can add every ingredient for a recipe to your cart",

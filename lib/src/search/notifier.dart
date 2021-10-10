@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/view/images.dart';
+import 'package:fresh_food_ui/src/assets/product_images.dart';
 
 enum SearchStatus {
   initial,

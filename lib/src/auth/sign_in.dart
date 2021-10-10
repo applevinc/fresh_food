@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/auth/auth.dart';
+import 'package:fresh_food_ui/src/auth/create_account.dart';
+import 'package:fresh_food_ui/src/style/colors.dart';
 
-import 'package:fresh_food_ui/view/screens/auth/auth.dart';
-import 'package:fresh_food_ui/view/screens/auth/create_account.dart';
-import 'package:fresh_food_ui/view/style/colors.dart';
+
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key key}) : super(key: key);

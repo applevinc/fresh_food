@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/view/images.dart';
-import 'package:fresh_food_ui/view/screens/cart/cart.dart';
-import 'package:fresh_food_ui/view/screens/quick_shop/quick_shop.dart';
-import 'package:fresh_food_ui/view/screens/recipes/recipes.dart';
-import 'package:fresh_food_ui/view/screens/settings/settigs.dart';
-import 'package:fresh_food_ui/view/screens/store/store.dart';
+import 'package:fresh_food_ui/src/assets/icons.dart';
+import 'package:fresh_food_ui/src/cart/cart.dart';
+import 'package:fresh_food_ui/src/quick_shop/quick_shop.dart';
+import 'package:fresh_food_ui/src/recipes/recipes.dart';
+import 'package:fresh_food_ui/src/settings/settigs.dart';
+import 'package:fresh_food_ui/src/store/store.dart';
+import 'package:fresh_food_ui/src/style/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/view/style/colors.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key key}) : super(key: key);

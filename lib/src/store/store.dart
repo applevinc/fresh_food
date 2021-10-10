@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/view/images.dart';
-import 'package:fresh_food_ui/view/screens/search/search.dart';
-import 'package:fresh_food_ui/view/style/colors.dart';
-import 'package:fresh_food_ui/view/style/constants.dart';
-import 'package:fresh_food_ui/view/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/assets/icons.dart';
+import 'package:fresh_food_ui/src/assets/product_images.dart';
+import 'package:fresh_food_ui/src/search/search.dart';
+import 'package:fresh_food_ui/src/style/colors.dart';
+import 'package:fresh_food_ui/src/style/constants.dart';
+import 'package:fresh_food_ui/src/widgets/appbar.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({Key key}) : super(key: key);

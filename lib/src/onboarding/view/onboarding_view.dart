@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/view/screens/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:fresh_food_ui/view/screens/onboarding/pageview_notifier.dart';
-import 'package:fresh_food_ui/view/screens/onboarding/recipe_pref_notifier.dart';
-import 'package:fresh_food_ui/view/style/colors.dart';
-import 'package:fresh_food_ui/view/style/constants.dart';
-import 'package:fresh_food_ui/view/widgets/button.dart';
+import 'package:fresh_food_ui/src/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:fresh_food_ui/src/onboarding/models/onboarding.dart';
+import 'package:fresh_food_ui/src/onboarding/controllers/pageview_controller.dart';
+import 'package:fresh_food_ui/src/onboarding/controllers/recipe_pref_controller.dart';
+import 'package:fresh_food_ui/src/onboarding/view/select_recipe_pref_view.dart';
+import 'package:fresh_food_ui/src/style/colors.dart';
+import 'package:fresh_food_ui/src/style/constants.dart';
+import 'package:fresh_food_ui/src/widgets/button.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -65,7 +67,7 @@ class _OnboardingPageView extends StatelessWidget {
             return _OnboardingPageviewItem(onboardingItem: onboardingItem);
           }
 
-          return _SelectRecipePrefWidget();
+          return SelectRecipePrefView();
         },
         onPageChanged: (value) {
           pageNotifier.nextPage(value);
@@ -81,7 +83,7 @@ class _OnboardingPageviewItem extends StatelessWidget {
     @required this.onboardingItem,
   }) : super(key: key);
 
-  final OnboardingModel onboardingItem;
+  final Onboarding onboardingItem;
 
   @override
   Widget build(BuildContext context) {
@@ -108,60 +110,7 @@ class _OnboardingPageviewItem extends StatelessWidget {
   }
 }
 
-class _SelectRecipePrefWidget extends StatelessWidget {
-  const _SelectRecipePrefWidget({Key key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    var recipeNotifier = context.watch<RecipeNotifier>();
-
-    return Column(
-      children: [
-        SizedBox(height: 62.h),
-        Text(
-          'Recipe Preferences',
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        SizedBox(height: 55.h),
-        SizedBox(
-          height: 306.h,
-          child: ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            itemCount: recipeNotifier.recipies.length,
-            itemBuilder: (context, index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    recipeNotifier.recipies[index].title,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  Switch(
-                    value: recipeNotifier.recipies[index].isSelected,
-                    onChanged: (bool value) {
-                      recipeNotifier.toggle(index, value);
-                    },
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
-        SizedBox(height: 79.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Text(
-            "Tailor your Recipes feed exactly how you like it",
-            style: Theme.of(context).textTheme.headline6,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        SizedBox(height: 63.h),
-      ],
-    );
-  }
-}
 
 class _GetStarted extends StatelessWidget {
   const _GetStarted({Key key}) : super(key: key);

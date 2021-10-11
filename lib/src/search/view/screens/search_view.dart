@@ -133,58 +133,56 @@ class _LoadingScreen extends StatefulWidget {
 }
 
 class __LoadingScreenState extends State<_LoadingScreen> {
-  var results;
+  Future<List<ProductEntity>> results;
 
   @override
   void initState() {
     super.initState();
     final searchController = context.read<SearchController>();
     results = searchController.getResults(widget.query);
+    Future.delayed(const Duration(seconds: 5), () {
+      gotoResultsScreen();
+    });
+  }
+
+  gotoResultsScreen() {
+    Navigator.pop(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: results,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          Navigator.pop(context);
-        }
-
-        return Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Image.asset(
-                AppImages.loading,
-                height: 136.5.h,
-                width: 136.5.w,
-              ),
-              SizedBox(height: 29.7.h),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  'Searching for',
-                  style: Theme.of(context).textTheme.bodyText1.apply(
-                        color: AppColors.medium_grey,
-                      ),
-                ),
-              ),
-              SizedBox(height: 3.h),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  widget.query.toUpperCase(),
-                  style: Theme.of(context).textTheme.headline5.apply(
-                        color: AppColors.green,
-                      ),
-                ),
-              ),
-            ],
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Image.asset(
+            AppImages.loading,
+            height: 136.5.h,
+            width: 136.5.w,
           ),
-        );
-      },
+          SizedBox(height: 29.7.h),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Searching for',
+              style: Theme.of(context).textTheme.bodyText1.apply(
+                    color: AppColors.medium_grey,
+                  ),
+            ),
+          ),
+          SizedBox(height: 3.h),
+          Align(
+            alignment: Alignment.center,
+            child: Text(
+              widget.query.toUpperCase(),
+              style: Theme.of(context).textTheme.headline5.apply(
+                    color: AppColors.green,
+                  ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

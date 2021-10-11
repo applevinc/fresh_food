@@ -5,7 +5,7 @@ class ProductEntity {
   final String storage;
   final String origin;
   final String preparationAndUsage;
-  final String nutritionInfo;
+  final Map<String, String> nutritionInfo;
 
   ProductEntity({
     this.name,

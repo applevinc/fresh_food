@@ -7,6 +7,7 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:fresh_food_ui/src/search/view/controllers/search_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/search/view/screens/product_detail_view.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -21,6 +22,7 @@ class SearchScreen extends StatelessWidget {
         title: (searchController.searchStatus != SearchingStatus.results)
             ? "Search"
             : "Search Results",
+        actions: true,
         actionIcon: AppIcons.close,
         actionCallback: () {
           searchController.reset();
@@ -96,6 +98,10 @@ class _SearchResultItem extends StatelessWidget {
     return InkWell(
       onTap: () {
         // go to product detail
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ProductDetailScreen(product: product)));
       },
       child: Container(
         height: 183.h,

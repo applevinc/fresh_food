@@ -80,6 +80,7 @@ class _AuthFormState extends State<AuthForm> {
             widget.fields,
             CustomButtom(
               label: widget.buttonLabel,
+              icon: Icons.arrow_forward,
               onTap: () {
                 // Validate returns true if the form is valid, or false otherwise.
                 if (_formKey.currentState.validate()) {

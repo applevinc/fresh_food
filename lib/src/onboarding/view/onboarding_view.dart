@@ -110,8 +110,6 @@ class _OnboardingPageviewItem extends StatelessWidget {
   }
 }
 
-
-
 class _GetStarted extends StatelessWidget {
   const _GetStarted({Key key}) : super(key: key);
 
@@ -121,9 +119,10 @@ class _GetStarted extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30.w),
       child: Column(
         children: [
-          SizedBox(height: 30.h),
+          SizedBox(height: 20.h),
           CustomButtom(
             label: "GET STARTED",
+            icon: Icons.arrow_forward,
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => BottomNavBar()));

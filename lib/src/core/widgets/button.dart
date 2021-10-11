@@ -7,10 +7,12 @@ class CustomButtom extends StatelessWidget {
     Key key,
     @required this.label,
     @required this.onTap,
+    @required this.icon,
   }) : super(key: key);
 
   final String label;
   final Function onTap;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +29,8 @@ class CustomButtom extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.arrow_forward,
-              size: 20.sp,
+              icon,
+              size: 25.sp,
               color: Colors.white,
             ),
             SizedBox(width: 10.7.w),

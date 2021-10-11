@@ -7,6 +7,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actionIcon,
     this.actionCallback,
+    this.actions,
     this.automaticallyImplyLeading = false,
   }) : super(key: key);
 
@@ -14,9 +15,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String actionIcon;
   final Function actionCallback;
   final bool automaticallyImplyLeading;
+  final bool actions;
 
   @override
-  Size get preferredSize => Size.fromHeight(89.h);
+  Size get preferredSize => Size.fromHeight(50.h);
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
       actions: [
-        InkWell(
-          onTap: actionCallback,
-          child: Padding(
-            padding: EdgeInsets.only(right: 32.w),
-            child: ImageIcon(AssetImage(actionIcon)),
-          ),
-        ),
+        (actions != false)
+            ? InkWell(
+                onTap: actionCallback,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 32.w),
+                  child: ImageIcon(AssetImage(actionIcon)),
+                ),
+              )
+            : SizedBox.shrink(),
       ],
     );
   }

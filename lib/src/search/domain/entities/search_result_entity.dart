@@ -6,6 +6,6 @@ class SearchResultEntity extends ProductEntity {
 
   SearchResultEntity({
     this.name,
-    this.img,
+    this.img, String description, String storage, String origin, String preparationAndUsage, Map<String, String> nutritionInfo,
   }) : super(img: img, name: name);
 }

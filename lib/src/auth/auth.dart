@@ -5,8 +5,6 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/onboarding/view/onboarding_view.dart';
 
-
-
 class AuthScreen extends StatelessWidget {
   const AuthScreen({
     Key key,
@@ -124,4 +122,3 @@ class CustomTextFormField extends StatelessWidget {
     );
   }
 }
-

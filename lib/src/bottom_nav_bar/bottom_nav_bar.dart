@@ -3,7 +3,7 @@ import 'package:fresh_food_ui/src/cart/cart.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/quick_shop/quick_shop.dart';
-import 'package:fresh_food_ui/src/recipes/recipes.dart';
+import 'package:fresh_food_ui/src/recipe_posts/view/screens/recipes_posts_view.dart';
 import 'package:fresh_food_ui/src/settings/settigs.dart';
 import 'package:fresh_food_ui/src/store/view/store.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

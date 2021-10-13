@@ -12,6 +12,9 @@ class AppTheme {
           backgroundColor: Colors.white,
           elevation: 0.0,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
+      tabBarTheme: TabBarTheme(
+        unselectedLabelColor: AppColors.medium_grey,
+      ),
       textTheme: TextTheme(
           headline4: TextStyle(
             color: AppColors.m_medium_grey,

@@ -8,4 +8,8 @@ class AppIcons {
   static const String settings = "assets/icons/icon-settings.png";
   static const String store = "assets/icons/icon-store.png";
   static const String voice = "assets/icons/icon-voice.png";
+  static const String share = "assets/icons/icon-share.png";
+  static const String cook = "assets/icons/icon-cook.png";
+  static const String difficulty = "assets/icons/icon-difficulty.png";
+  static const String clock = "assets/icons/icon-clock.png";
 }

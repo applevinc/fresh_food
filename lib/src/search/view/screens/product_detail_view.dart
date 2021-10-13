@@ -5,7 +5,7 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
-import 'package:fresh_food_ui/src/search/domain/entities/nutrition_info_entity.dart';
+import 'package:fresh_food_ui/src/core/widgets/nutrition_info.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({Key key, @required this.product}) : super(key: key);
@@ -22,9 +22,8 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.only(right: 30.w, left: 30.w, bottom: 70.h),
+        padding: EdgeInsets.only(right: 30.w, left: 30.w, top: 15.h, bottom: 70.h),
         children: [
-          SizedBox(height: 15.h),
           Image.asset(
             product.img,
             height: 276.h,
@@ -140,7 +139,7 @@ class _ProductInfo extends StatelessWidget {
           bodyText: 'Wash before use. Trim as required.',
         ),
         SizedBox(height: 26.h),
-        _NutritionInfo(product: product),
+        NutritionInfo(entity: product),
       ],
     );
   }
@@ -170,68 +169,6 @@ class _ProductInfoItem extends StatelessWidget {
         SizedBox(height: 24.h),
         Text(bodyText, style: Theme.of(context).textTheme.bodyText1),
       ],
-    );
-  }
-}
-
-class _NutritionInfo extends StatelessWidget {
-  const _NutritionInfo({Key key, @required this.product}) : super(key: key);
-
-  final ProductEntity product;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Nutritional Information',
-          style: Theme.of(context).textTheme.headline6.copyWith(color: AppColors.green),
-        ),
-        Column(
-          children: List.generate(product.nutritionInfo.length, (index) {
-            List<NutritionInfoEntity> nutritionInfo = [];
-            product.nutritionInfo.forEach((key, value) =>
-                nutritionInfo.add(NutritionInfoEntity(label: key, value: value)));
-            var nutritionInfoElement = nutritionInfo[index];
-
-            return _NutritionInfoItem(nutritionInfoElement);
-          }),
-        )
-      ],
-    );
-  }
-}
-
-class _NutritionInfoItem extends StatelessWidget {
-  const _NutritionInfoItem(
-    this.nutritionInfoElement,
-  );
-
-  final NutritionInfoEntity nutritionInfoElement;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 24.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            nutritionInfoElement.label,
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  fontWeight: FontWeight.w500,
-                ),
-          ),
-          Text(
-            nutritionInfoElement.value,
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.medium_grey,
-                ),
-          ),
-        ],
-      ),
     );
   }
 }

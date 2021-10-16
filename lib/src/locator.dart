@@ -1,3 +1,9 @@
+import 'package:fresh_food_ui/src/quick_shop/data/data_sources/mock_data_source.dart';
+import 'package:fresh_food_ui/src/quick_shop/data/data_sources/remote_data_source.dart';
+import 'package:fresh_food_ui/src/quick_shop/data/repositories/shop_repository_impl.dart';
+import 'package:fresh_food_ui/src/quick_shop/domain/repository/shop_repository.dart';
+import 'package:fresh_food_ui/src/quick_shop/domain/usecases/fetch_fruit_items_usecase.dart';
+import 'package:fresh_food_ui/src/quick_shop/view/controllers/fruit_shop_controller.dart';
 import 'package:fresh_food_ui/src/recipe_posts/data/data_sources/mock_data_source.dart';
 import 'package:fresh_food_ui/src/recipe_posts/data/data_sources/remote_data_source.dart';
 import 'package:fresh_food_ui/src/recipe_posts/data/repositories/recipe_posts_repository.dart';
@@ -28,6 +34,7 @@ void init() async {
   backend.registerFactory(() => GetKetoRecipePostsController(backend()));
   backend.registerFactory(() => GetVeganRecipePostsController(backend()));
   backend.registerFactory(() => GetPaleoRecipePostsController(backend()));
+  backend.registerFactory(() => FruitShopController(backend()));
 
   // - usecases
   backend.registerLazySingleton(
@@ -36,18 +43,22 @@ void init() async {
   backend.registerLazySingleton(() => GetRecipePostsUseCase(backend()));
   backend.registerLazySingleton(() => GetVeganRecipePostsUseCase(backend()));
   backend.registerLazySingleton(() => GetPaleoRecipePostsUseCase(backend()));
+  backend.registerLazySingleton(() => FetchFruitItemsUseCase(backend()));
 
   // - repository
   backend.registerLazySingleton<ISearchResultRepository>(
       () => SearchResultRepositoryImpl(searchResultRemoteDataSource: backend()));
   backend.registerLazySingleton<IRecipePostsRepository>(
       () => RecipePostsRepositoryImpl(recipePostsRemoteDataSource: backend()));
+  backend.registerLazySingleton<IShopRepository>(
+      () => ShopRepositoryImpl(shopRemoteDataSource: backend()));
 
   // - data sources
   backend.registerLazySingleton<ISearchResultRemoteDataSource>(
       () => MockSearchResultRemoteDataSourceImpl());
   backend.registerLazySingleton<IRecipePostsRemoteDataSource>(
       () => MockRecipePostsDataSource());
+  backend.registerLazySingleton<IShopRemoteDataSource>(() => ShopMockDataSource());
 
   // core
 

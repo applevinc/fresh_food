@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/cart/cart.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
-import 'package:fresh_food_ui/src/core/style/colors.dart';
-import 'package:fresh_food_ui/src/quick_shop/quick_shop.dart';
+import 'package:fresh_food_ui/src/quick_shop/view/screens/quick_shop.dart';
 import 'package:fresh_food_ui/src/recipe_posts/view/screens/recipes_posts_view.dart';
 import 'package:fresh_food_ui/src/settings/settigs.dart';
 import 'package:fresh_food_ui/src/store/view/store.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key key}) : super(key: key);
@@ -32,13 +30,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
     });
   }
 
-  bool _quickShopTapped() {
-    if (_selectedIndex == 2) {
-      return true;
-    }
-    return false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,27 +45,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: "Recipes",
           ),
           BottomNavigationBarItem(
-            icon: (_quickShopTapped())
-                ? Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.m_medium_grey,
-                    ),
-                    child: Icon(
-                      Icons.add,
-                      size: 49.sp,
-                    ),
-                  )
-                : Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.medium_grey,
-                    ),
-                    child: Icon(
-                      Icons.add,
-                      size: 49.sp,
-                    ),
-                  ),
+            icon: (_selectedIndex == 2)
+                ? Image.asset(AppIcons.quick_shop_cancel)
+                : Image.asset(AppIcons.quick_shop_plus),
             label: "Quick Shop",
           ),
           BottomNavigationBarItem(

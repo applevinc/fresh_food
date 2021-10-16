@@ -10,7 +10,7 @@ var products = <StoreProduct>[
   ),
   StoreProduct(
     name: "Citrus",
-    img: ProductImages.orange,
+    img: ProductImages.orange_store,
     bgColor: Color(0xffffa700),
   ),
   StoreProduct(

@@ -14,24 +14,24 @@ var _cart = <CartEntity>[
     name: 'Broccoli',
     img: ProductImages.broccoli,
     price: 5,
-    qty: '300g',
+    qty:  300,
   ),
   CartEntity(
     name: 'Kale',
     img: ProductImages.kale,
     price: 5,
-    qty: '300g',
+    qty:  300,
   ),
   CartEntity(
     name: 'Red Pepper',
     img: ProductImages.red_pepper,
     price: 5,
-    qty: '300g',
+    qty: 300,
   ),
   CartEntity(
     name: 'Strawberries',
     img: ProductImages.strawberry,
     price: 5,
-    qty: '300g',
+    qty:  300,
   ),
 ];

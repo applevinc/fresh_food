@@ -4,7 +4,7 @@ class CartEntity extends ProductEntity{
   final String name;
   final String img;
   final int price;
-  final String qty;
+  int qty;
 
   CartEntity({
     this.name,

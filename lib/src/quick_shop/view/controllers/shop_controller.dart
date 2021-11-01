@@ -1,48 +1,41 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fresh_food_ui/src/quick_shop/domain/entities/shop_item_entity.dart';
-import 'package:fresh_food_ui/src/quick_shop/domain/usecases/add_shop_items_to_cart_usecase.dart';
 
 class ShopController extends ChangeNotifier {
-  final AddShopItemsToCartUseCase _addShopItemsToCartUseCase;
-
-  List<ShopItemEntity> _fruitItems = [];
+  List<ShopItemEntity> _items = [];
   List<ShopItemEntity> _store = [];
 
-  ShopController(this._addShopItemsToCartUseCase);
-
-  void addItemsToCart() {
-    _addShopItemsToCartUseCase.addItemsToCart(_fruitItems);
-  }
+  List<ShopItemEntity> get items => _items;
 
   void add(ShopItemEntity item) {
-    if (_fruitItems.isEmpty) {
-      item.count++;
-      _fruitItems.add(item);
+    if (_items.isEmpty) {
+      item.qty++;
+      _items.add(item);
       notifyListeners();
     } else {
-      List<ShopItemEntity> copyOfFruitCart = _fruitItems;
+      List<ShopItemEntity> copyOfFruitCart = _items;
 
       if (_exist(item, copyOfFruitCart)) {
-        item.count++;
+        item.qty++;
         notifyListeners();
       } else {
-        item.count++;
-        _fruitItems.add(item);
+        item.qty++;
+        _items.add(item);
         notifyListeners();
       }
     }
   }
 
   void remove(ShopItemEntity item) {
-    for (int i = 0; i < _fruitItems.length; i++) {
-      if (_fruitItems[i].name == item.name) {
-        if (item.count == 0) {
-          item.count = 0;
-          _fruitItems.removeAt(i);
+    for (int i = 0; i < _items.length; i++) {
+      if (_items[i].name == item.name) {
+        if (item.qty == 0) {
+          item.qty = 0;
+          _items.removeAt(i);
           notifyListeners();
           break;
         } else {
-          item.count--;
+          item.qty--;
           notifyListeners();
           break;
         }
@@ -52,7 +45,7 @@ class ShopController extends ChangeNotifier {
 
   void refresh() {
     for (var item in _store) {
-      item.count = 0;
+      item.qty = 0;
     }
     notifyListeners();
   }

@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => backend<GetPaleoRecipePostsController>()),
           ChangeNotifierProvider(create: (_) => backend<SearchController>()),
           ChangeNotifierProvider(create: (_) => backend<FruitStoreController>()),
-          ChangeNotifierProvider(create: (_) => backend<FruitShopController>()),
-          ChangeNotifierProvider(create: (_) => backend<CartController>()),
-          ChangeNotifierProvider(create: (_) => backend<ShopController>()),
+          ChangeNotifierProvider(create: (_) => FruitShopController()),
+          ChangeNotifierProvider(create: (_) => CartController()),
+          ChangeNotifierProvider(create: (_) => ShopController()),
         ],
         child: MaterialApp(
           title: 'Fresh Food UI',

@@ -36,6 +36,7 @@ class QuickShopScreen extends StatelessWidget {
                 //add items to cart
                 print(fruitShopController.items);
                 //cartController.addItemsFromShop(fruitShopController.items);
+                cartController.addShop(fruitShopController.items);
               },
               child: Padding(
                 padding: EdgeInsets.only(right: 32.w),

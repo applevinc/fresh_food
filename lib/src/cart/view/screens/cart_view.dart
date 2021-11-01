@@ -9,32 +9,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:provider/provider.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   const CartScreen({Key key}) : super(key: key);
-
-  @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-  Future<List<CartEntity>> _cartItems;
-
-  @override
-  void initState() {
-    super.initState();
-    var cartController = context.read<CartController>();
-    _cartItems = cartController.fetchShopCart();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _CartAppBar(),
-      body: FutureBuilder(
-        future: _cartItems,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+      body: Consumer<CartController>(
+        builder: (_, cartController, child) {
+          if (cartController.items.isEmpty) {
+            return Center(
+              child: Text(
+                'No Item in Cart',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            );
           }
 
           return Padding(
@@ -108,7 +98,7 @@ class _Item extends StatelessWidget {
           ),
           Spacer(),
           Text(
-            '£${cartEntity.price}.00',
+            '£${cartEntity.qty}.00',
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ],
@@ -124,6 +114,7 @@ class _ItemsCheckOut extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 7.h),
         CheckOutInfo(),
         SizedBox(height: 7.h),
         CheckOutInfo(),

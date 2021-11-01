@@ -121,7 +121,7 @@ class _FruitItem extends StatelessWidget {
                 ),
               ),
               Text(
-                '${fruit.count}',
+                '${fruit.qty}',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               InkWell(

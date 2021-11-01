@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/recipe_posts/domain/entities/recipe_entity.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/recipe_posts/view/screens/recipe_post_detail_view.dart';
@@ -28,7 +29,7 @@ class RecipePostItem extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 15.h),
         decoration: BoxDecoration(
-          color: AppColors.lighter_grey,
+          color: isDarkMode(context) ? AppColors.dark_grey : AppColors.lighter_grey,
           borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(

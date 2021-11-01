@@ -15,4 +15,10 @@ class AppIcons {
   static const String clock = "assets/icons/icon-clock.png";
   static const String tick = "assets/icons/icon-tick.png";
   static const String refresh = "assets/icons/icon-refresh.png";
+  static const String delivery = "assets/icons/icon-delivery.png";
+  static const String location = "assets/icons/icon-location.png";
+  static const String payment = "assets/icons/icon-payment.png";
+  static const String summary = "assets/icons/icon-summary.png";
+  static const String delivery_selected = "assets/icons/checkbox-selected.png";
+  static const String fast_delivery = "assets/icons/icon-fast-delivery.png";
 }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/quick_shop/domain/entities/shop_item_entity.dart';
-import 'package:fresh_food_ui/src/quick_shop/view/controllers/fruit_shop_controller.dart';
+import 'package:fresh_food_ui/src/quick_shop/view/controllers/fruit_controller.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,8 +19,8 @@ class _FruitShopScreenState extends State<FruitShopScreen> {
   @override
   void initState() {
     super.initState();
-    var fruitShopController = context.read<FruitShopController>();
-    _fruitItems = fruitShopController.fetchItems();
+    var fruitStoreController = context.read<FruitStoreController>();
+    _fruitItems = fruitStoreController.fetch();
   }
 
   @override
@@ -31,28 +32,46 @@ class _FruitShopScreenState extends State<FruitShopScreen> {
           return CircularProgressIndicator();
         }
 
-        var fruits = context.watch<FruitShopController>().fruitItems;
-        return GridView.builder(
-          padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 43.h),
-          itemCount: fruits.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 16.w,
-            mainAxisSpacing: 33.h,
-          ),
-          itemBuilder: (context, index) {
-            var fruit = fruits[index];
-
-            return ShopItem(fruit: fruit);
-          },
-        );
+        var fruits = context.watch<FruitStoreController>().items;
+        return _FruitItemGrid(fruits: fruits);
       },
     );
   }
 }
 
-class ShopItem extends StatelessWidget {
-  const ShopItem({
+class _FruitItemGrid extends StatelessWidget {
+  const _FruitItemGrid({
+    Key key,
+    @required this.fruits,
+  }) : super(key: key);
+
+  final List<ShopItemEntity> fruits;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 525.h,
+      decoration: kContainerBottomShadowDecoration(context),
+      child: GridView.builder(
+        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 43.h),
+        itemCount: fruits.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 16.w,
+          mainAxisSpacing: 33.h,
+        ),
+        itemBuilder: (context, index) {
+          var fruit = fruits[index];
+
+          return _FruitItem(fruit: fruit);
+        },
+      ),
+    );
+  }
+}
+
+class _FruitItem extends StatelessWidget {
+  const _FruitItem({
     Key key,
     @required this.fruit,
   }) : super(key: key);
@@ -84,7 +103,7 @@ class ShopItem extends StatelessWidget {
           height: 34.h,
           padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
           decoration: BoxDecoration(
-            color: AppColors.lighter_grey,
+            color: isDarkMode(context) ? AppColors.dark_grey : AppColors.lighter_grey,
             borderRadius: BorderRadius.circular(8.r),
           ),
           child: Row(
@@ -94,7 +113,6 @@ class ShopItem extends StatelessWidget {
               InkWell(
                 onTap: () {
                   fruitShopController.remove(fruit);
-                  print('fruit count: ${fruit.count}');
                 },
                 child: Icon(
                   Icons.remove,
@@ -102,17 +120,13 @@ class ShopItem extends StatelessWidget {
                   color: AppColors.m_medium_grey,
                 ),
               ),
-              //SizedBox(width: 15.w),
               Text(
                 '${fruit.count}',
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              //SizedBox(width: 13.w),
               InkWell(
                 onTap: () {
                   fruitShopController.add(fruit);
-                  //print('fruit count: ${fruit.count}');
-                  print('fruitCart length: ${fruitShopController.fruitCart.length}');
                 },
                 child: Icon(
                   Icons.add,

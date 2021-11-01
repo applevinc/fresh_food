@@ -16,12 +16,18 @@ class StoreScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: "Store",
-        actionIcon: AppIcons.search,
-        actionCallback: () {
-          // got to search screen
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => SearchScreen()));
-        },
+        actions: [
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => SearchScreen()));
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 32.w),
+              child: ImageIcon(AssetImage(AppIcons.search)),
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -144,5 +150,3 @@ class _FruitContainer extends StatelessWidget {
     );
   }
 }
-
-

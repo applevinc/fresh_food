@@ -9,7 +9,7 @@ class AppTheme {
       brightness: Brightness.light,
       highlightColor: Colors.transparent,
       appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
       tabBarTheme: TabBarTheme(
@@ -34,7 +34,7 @@ class AppTheme {
           bodyText1: TextStyle(
             color: AppColors.m_medium_grey,
             fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           )),
       inputDecorationTheme: InputDecorationTheme(
           contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
@@ -88,7 +88,8 @@ class AppTheme {
       brightness: Brightness.dark,
       highlightColor: Colors.transparent,
       appBarTheme: AppBarTheme(
-          backgroundColor: AppColors.darker_grey,
+          //backgroundColor: AppColors.darker_grey,
+          backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
       textTheme: TextTheme(
@@ -110,7 +111,7 @@ class AppTheme {
           bodyText1: TextStyle(
             color: AppColors.m_medium_grey,
             fontSize: 16.sp,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           )),
       buttonTheme: ButtonThemeData(
           buttonColor: AppColors.green,

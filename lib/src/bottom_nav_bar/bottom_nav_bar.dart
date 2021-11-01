@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/src/cart/cart.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/cart_view.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/quick_shop/view/screens/quick_shop.dart';
 import 'package:fresh_food_ui/src/recipe_posts/view/screens/recipes_posts_view.dart';

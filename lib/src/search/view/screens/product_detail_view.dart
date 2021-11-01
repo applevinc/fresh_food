@@ -18,7 +18,6 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: '${product.name}',
         automaticallyImplyLeading: true,
-        actions: false,
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),

@@ -15,41 +15,35 @@ class RecipesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: DefaultTabController(
-        length: 4,
-        initialIndex: 1,
-        child: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return [
-              CustomSliverAppBar(
-                title: 'Recipes',
-                tabs: [
-                  Tab(text: 'All'),
-                  Tab(text: 'Vegan'),
-                  Tab(text: 'Keto'),
-                  Tab(text: 'Paleo'),
-                ],
-                actions: [
-                  InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 32.w),
-                      child: ImageIcon(AssetImage(AppIcons.search)),
-                    ),
-                  ),
-                ],
+    return DefaultTabController(
+      length: 4,
+      initialIndex: 1,
+      child: Scaffold(
+        appBar: CustomAppBar(
+          title: 'Recipes',
+          tabs: [
+            Tab(text: 'All'),
+            Tab(text: 'Vegan'),
+            Tab(text: 'Keto'),
+            Tab(text: 'Paleo'),
+          ],
+          actions: [
+            InkWell(
+              onTap: () {},
+              child: Padding(
+                padding: EdgeInsets.only(right: 32.w),
+                child: ImageIcon(AssetImage(AppIcons.search)),
               ),
-            ];
-          },
-          body: TabBarView(
-            children: [
-              AllRecipes(),
-              VeganRecipeScreen(),
-              KetoRecipeScreen(),
-              PaleoRecipeScreen(),
-            ],
-          ),
+            ),
+          ],
+        ),
+        body: TabBarView(
+          children: [
+            AllRecipes(),
+            VeganRecipeScreen(),
+            KetoRecipeScreen(),
+            PaleoRecipeScreen(),
+          ],
         ),
       ),
     );

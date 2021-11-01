@@ -12,7 +12,7 @@ class PageNotifier extends ChangeNotifier {
       description: "Quickly search and addhealthy foods to your cart",
     ),
     Onboarding(
-      img: AppImages.onboarding_2,
+      img: AppImages.onboarding_2_dark,
       description:
           "With one click you can add every ingredient for a recipe to your cart",
     ),

@@ -7,84 +7,44 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
     Key key,
-    this.title,
-    this.actionIcon,
-    this.actionCallback,
+    @required this.title,
     this.actions,
     this.automaticallyImplyLeading = false,
+    this.tabs,
+    this.leading,
   }) : super(key: key);
 
   final String title;
-  final String actionIcon;
-  final Function actionCallback;
   final bool automaticallyImplyLeading;
-  final bool actions;
+  final List<Widget> actions;
+  final List<Widget> tabs;
+  final Widget leading;
 
   @override
-  Size get preferredSize => Size.fromHeight(70.h);
+  Size get preferredSize => Size.fromHeight((tabs == null) ? 70.h : 150.h);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      leading: leading,
       title: Text(
         title,
         style: Theme.of(context).textTheme.headline6,
       ),
       centerTitle: true,
       automaticallyImplyLeading: automaticallyImplyLeading,
-      actions: [
-        (actions != false)
-            ? InkWell(
-                onTap: actionCallback,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 32.w),
-                  child: ImageIcon(AssetImage(actionIcon)),
-                ),
-              )
-            : SizedBox.shrink(),
-      ],
-    );
-  }
-}
-
-class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({
-    Key key,
-    @required this.title,
-    @required this.tabs,
-    this.automaticallyImplyLeading = false,
-    this.leadingIcon,
-    this.actions,
-  }) : super(key: key);
-
-  final String title;
-  final List<Widget> tabs;
-  final List<Widget> actions;
-  final bool automaticallyImplyLeading;
-  final Widget leadingIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverAppBar(
-      leading: leadingIcon,
-      pinned: true,
-      automaticallyImplyLeading: automaticallyImplyLeading,
-      centerTitle: true,
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headline6,
-      ),
       actions: actions,
-      bottom: TabBarContainer(tabs),
+      bottom: (tabs == null) ? null : TabBarContainer(tabs),
+      // systemOverlayStyle: SystemUiOverlayStyle(
+      //   statusBarColor: AppColors.green,
+      //   statusBarBrightness: isDarkMode(context) ? Brightness.dark : Brightness.light,
+      // ),
     );
   }
 }
 
 class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
-  const TabBarContainer(
-    this.tabs, {
-    Key key,
-  }) : super(key: key);
+  const TabBarContainer(this.tabs);
 
   @override
   Size get preferredSize => Size.fromHeight(90.h);

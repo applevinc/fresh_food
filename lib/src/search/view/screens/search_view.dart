@@ -22,12 +22,18 @@ class SearchScreen extends StatelessWidget {
         title: (searchController.searchStatus != SearchingStatus.results)
             ? "Search"
             : "Search Results",
-        actions: true,
-        actionIcon: AppIcons.close,
-        actionCallback: () {
-          searchController.reset();
-          Navigator.pop(context);
-        },
+        actions: [
+          InkWell(
+            onTap: () {
+              searchController.reset();
+              Navigator.pop(context);
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 32.w),
+              child: ImageIcon(AssetImage(AppIcons.close)),
+            ),
+          )
+        ],
       ),
       body: Column(
         children: [
@@ -108,7 +114,7 @@ class _SearchResultItem extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.only(top: 24.h, right: 18.w, left: 18.w, bottom: 11.h),
         decoration: BoxDecoration(
-            color: (isDarkMode(context)) ? Colors.white : AppColors.darker_grey,
+            color: (isDarkMode(context)) ? AppColors.darker_grey : Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(8)),
             boxShadow: [
               BoxShadow(

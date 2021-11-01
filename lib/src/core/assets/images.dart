@@ -8,4 +8,5 @@ class AppImages {
   static const String recipe_img = "assets/images/recipe_1.png";
   static const String checkbox = "assets/images/checkbox.png";
   static const String unCheckbox = "assets/images/uncheckbox.png";
+  static const String debitCard = "assets/images/debit-card.png";
 }

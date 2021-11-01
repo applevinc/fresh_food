@@ -22,8 +22,17 @@ class RecipePostDetailScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: '${recipeEntity.name}',
         automaticallyImplyLeading: true,
-        actions: true,
-        actionIcon: AppIcons.share,
+        actions: [
+          InkWell(
+            onTap: () {
+              // share recipe
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 32.w),
+              child: ImageIcon(AssetImage(AppIcons.share)),
+            ),
+          )
+        ],
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),

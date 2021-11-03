@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food_ui/src/cart/view/controllers/cart_controller.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/cart_view.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/quick_shop/view/screens/quick_shop.dart';
 import 'package:fresh_food_ui/src/recipe_posts/view/screens/recipes_posts_view.dart';
 import 'package:fresh_food_ui/src/settings/settigs.dart';
 import 'package:fresh_food_ui/src/store/view/store.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key key}) : super(key: key);
@@ -32,6 +36,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    var cartController = context.watch<CartController>();
+
     return Scaffold(
       body: _pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -51,7 +57,34 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: "Quick Shop",
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage(AppIcons.cart)),
+            icon: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                ImageIcon(AssetImage(AppIcons.cart)),
+                (cartController.items.isNotEmpty)
+                    ? Positioned(
+                        bottom: -5.h,
+                        right: -9.w,
+                        child: Container(
+                          width: 20.w,
+                          height: 20.h,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: AppColors.green,
+                          ),
+                          child: Text(
+                            '${cartController.items.length}',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .copyWith(color: Colors.white, fontSize: 12.sp),
+                          ),
+                        ),
+                      )
+                    : SizedBox.shrink(),
+              ],
+            ),
             label: "Cart",
           ),
           BottomNavigationBarItem(

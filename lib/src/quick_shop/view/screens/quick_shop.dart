@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/cart/view/controllers/cart_controller.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
+import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/quick_shop/view/controllers/fruit_controller.dart';
@@ -16,6 +17,7 @@ class QuickShopScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var cartController = context.watch<CartController>();
     var fruitShopController = context.watch<FruitShopController>();
+    var fruitStoreController = context.watch<FruitStoreController>();
 
     return DefaultTabController(
       length: 4,
@@ -31,12 +33,24 @@ class QuickShopScreen extends StatelessWidget {
             Tab(text: 'Nuts'),
           ],
           actions: [
-            InkWell(
+            GestureDetector(
               onTap: () {
-                //add items to cart
-                print(fruitShopController.items);
-                //cartController.addItemsFromShop(fruitShopController.items);
                 cartController.addShop(fruitShopController.items);
+                var snackBar = SnackBar(
+                  content: Text(
+                    'Added items to cart',
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(color: Colors.white),
+                  ),
+                  backgroundColor: AppColors.green,
+                  elevation: 0.0,
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+                fruitShopController.empty();
+                fruitStoreController.refresh();
               },
               child: Padding(
                 padding: EdgeInsets.only(right: 32.w),

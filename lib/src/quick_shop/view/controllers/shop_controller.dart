@@ -3,7 +3,6 @@ import 'package:fresh_food_ui/src/quick_shop/domain/entities/shop_item_entity.da
 
 class ShopController extends ChangeNotifier {
   List<ShopItemEntity> _items = [];
-  List<ShopItemEntity> _store = [];
 
   List<ShopItemEntity> get items => _items;
 
@@ -43,11 +42,8 @@ class ShopController extends ChangeNotifier {
     }
   }
 
-  void refresh() {
-    for (var item in _store) {
-      item.qty = 0;
-    }
-    notifyListeners();
+  void empty() {
+    _items = [];
   }
 
   bool _exist(ShopItemEntity item, List<ShopItemEntity> cart) {

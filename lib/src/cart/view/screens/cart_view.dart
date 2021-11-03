@@ -112,14 +112,16 @@ class _ItemsCheckOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cartController = context.watch<CartController>();
+
     return Column(
       children: [
         SizedBox(height: 7.h),
-        CheckOutInfo(),
+        CheckOutInfo(label: 'Sub-total', value: '£${cartController.total}'),
         SizedBox(height: 7.h),
-        CheckOutInfo(),
+        CheckOutInfo(label: 'Delivery', value: 'Standard (free)'),
         SizedBox(height: 7.h),
-        CheckOutInfo(fontSize: 24),
+        CheckOutInfo(label: 'Total', value: '£${cartController.total}', fontSize: 24),
         SizedBox(height: 24.h),
         CustomButtom(
           label: 'Checkout',
@@ -138,8 +140,12 @@ class CheckOutInfo extends StatelessWidget {
   const CheckOutInfo({
     Key key,
     this.fontSize = 16,
+    @required this.label,
+    @required this.value,
   }) : super(key: key);
 
+  final String label;
+  final String value;
   final double fontSize;
 
   @override
@@ -148,13 +154,13 @@ class CheckOutInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Sub-total',
+          label,
           style: Theme.of(context).textTheme.bodyText1.copyWith(
               fontSize: fontSize,
               fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),
         ),
         Text(
-          '£9.30',
+          value,
           style: Theme.of(context).textTheme.bodyText1.copyWith(
               fontSize: fontSize,
               fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),

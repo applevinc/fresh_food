@@ -5,11 +5,24 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 
-class DeliveryOptionsScreen extends StatelessWidget {
+const String _standard = 'Standard';
+const String _supersonic = 'Supersonic';
+
+class DeliveryOptionsScreen extends StatefulWidget {
   const DeliveryOptionsScreen({Key key}) : super(key: key);
 
   @override
+  State<DeliveryOptionsScreen> createState() => _DeliveryOptionsScreenState();
+}
+
+class _DeliveryOptionsScreenState extends State<DeliveryOptionsScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: EdgeInsets.only(top: 23.h, bottom: 30.h),
       child: Column(
@@ -31,7 +44,9 @@ class DeliveryOptionsScreen extends StatelessWidget {
             child: CustomButtom(
               label: 'Continue',
               icon: Icons.arrow_forward,
-              onTap: () {},
+              onTap: () {
+                DefaultTabController.of(context).animateTo(2);
+              },
             ),
           ),
         ],
@@ -173,12 +188,14 @@ class _SelectSpeed extends StatelessWidget {
           Row(
             children: [
               _SelectSpeedContainer(
+                label: _standard,
                 img: AppIcons.delivery,
                 title: 'Standard',
                 subtitle: '2-3 days (free)',
               ),
               SizedBox(width: 15.w),
               _SelectSpeedContainer(
+                label: _supersonic,
                 img: AppIcons.fast_delivery,
                 title: 'Supersonic',
                 subtitle: 'Next day (£4.99)',
@@ -194,11 +211,13 @@ class _SelectSpeed extends StatelessWidget {
 class _SelectSpeedContainer extends StatefulWidget {
   const _SelectSpeedContainer({
     Key key,
+    @required this.label,
     @required this.title,
     @required this.subtitle,
     @required this.img,
   }) : super(key: key);
 
+  final String label;
   final String title;
   final String subtitle;
   final img;

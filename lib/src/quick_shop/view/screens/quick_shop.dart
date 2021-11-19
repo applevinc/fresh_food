@@ -37,6 +37,7 @@ class QuickShopScreen extends StatelessWidget {
               onTap: () {
                 cartController.addShop(fruitShopController.items);
                 var snackBar = SnackBar(
+                  duration: Duration(milliseconds: 1500),
                   content: Text(
                     'Added items to cart',
                     style: Theme.of(context)

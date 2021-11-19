@@ -5,9 +5,15 @@ import 'package:fresh_food_ui/src/quick_shop/domain/entities/shop_item_entity.da
 
 import 'package:tuple/tuple.dart';
 
+enum DeliveryOption {
+  standard,
+  supersonic,
+}
+
 class CartController extends ChangeNotifier {
   List<CartEntity> _items = [];
   int _total = 0;
+  DeliveryOption deliveryOption = DeliveryOption.standard;
 
   List<CartEntity> get items => _items;
   int get total => _total;

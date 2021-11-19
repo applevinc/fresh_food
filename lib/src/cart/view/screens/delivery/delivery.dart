@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/delivery_options.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/location.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/order_summary.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/payment.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/delivery_options.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/location.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/order_summary.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/payment.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 
-class DeliveryAddressScreen extends StatelessWidget {
-  const DeliveryAddressScreen({Key key}) : super(key: key);
+class DeliveryScreen extends StatelessWidget {
+  const DeliveryScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class DeliveryAddressScreen extends StatelessWidget {
           ],
         ),
         body: TabBarView(
+          physics: BouncingScrollPhysics(),
           children: [
             LocationScreen(),
             DeliveryOptionsScreen(),

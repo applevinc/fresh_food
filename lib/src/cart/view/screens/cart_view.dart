@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/cart/domain/entities/cart_entity.dart';
 import 'package:fresh_food_ui/src/cart/view/controllers/cart_controller.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/delivery_address.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/delivery.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
@@ -128,7 +128,7 @@ class _ItemsCheckOut extends StatelessWidget {
           icon: Icons.arrow_forward,
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DeliveryAddressScreen()));
+                MaterialPageRoute(builder: (context) => DeliveryScreen()));
           },
         ),
       ],

@@ -62,6 +62,9 @@ class AppTheme {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed),
+      scrollbarTheme: ScrollbarThemeData(
+        thumbColor: MaterialStateProperty.all(AppColors.darker_grey),
+      ),
       // colorScheme: ColorScheme.fromSwatch(
       //   primarySwatch: MaterialColor(
       //     0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
@@ -139,6 +142,10 @@ class AppTheme {
           showSelectedLabels: false,
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed),
+      scrollbarTheme: ScrollbarThemeData(
+        
+        thumbColor: MaterialStateProperty.all(AppColors.lighter_grey),
+      ),
       // colorScheme: ColorScheme.fromSwatch(
       //     primarySwatch: MaterialColor(
       //   0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.

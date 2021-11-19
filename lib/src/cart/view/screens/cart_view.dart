@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:fresh_food_ui/src/cart/domain/entities/cart_entity.dart';
 import 'package:fresh_food_ui/src/cart/view/controllers/cart_controller.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/delivery/delivery.dart';
-import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:fresh_food_ui/src/cart/view/widgets/cart_items_listview.dart';
+import 'package:fresh_food_ui/src/cart/view/widgets/checkout.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:provider/provider.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({Key key}) : super(key: key);
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,141 +38,22 @@ class CartScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 30.w),
             child: Column(
               children: [
-                _ItemListView(),
-                _ItemsCheckOut(),
+                CartItemListView(scrollController: scrollController),
+                CheckOut(),
+                SizedBox(height: 24.h),
+                CustomButtom(
+                  label: 'Checkout',
+                  icon: Icons.arrow_forward,
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => DeliveryScreen()));
+                  },
+                ),
               ],
             ),
           );
         },
       ),
-    );
-  }
-}
-
-class _ItemListView extends StatelessWidget {
-  const _ItemListView({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var cartController = context.watch<CartController>();
-
-    return Expanded(
-      child: ListView.builder(
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(vertical: 30.h),
-        itemCount: cartController.items.length,
-        itemBuilder: (context, index) {
-          var item = cartController.items[index];
-
-          return _Item(cartEntity: item);
-        },
-      ),
-    );
-  }
-}
-
-class _Item extends StatelessWidget {
-  const _Item({
-    Key key,
-    this.cartEntity,
-  }) : super(key: key);
-
-  final CartEntity cartEntity;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 60.h,
-      padding: EdgeInsets.only(top: 10.h, bottom: 10.h, left: 10.w, right: 30.w),
-      margin: EdgeInsets.only(bottom: 15.h),
-      decoration: BoxDecoration(
-        color: isDarkMode(context) ? AppColors.dark_grey : AppColors.lighter_grey,
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Row(
-        children: [
-          Image.asset(
-            cartEntity.img,
-            height: 46.h,
-            width: 46.w,
-          ),
-          SizedBox(width: 10.w),
-          Text(
-            cartEntity.name,
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-          Spacer(),
-          Text(
-            '£${cartEntity.qty}.00',
-            style: Theme.of(context).textTheme.bodyText1,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ItemsCheckOut extends StatelessWidget {
-  const _ItemsCheckOut({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var cartController = context.watch<CartController>();
-
-    return Column(
-      children: [
-        SizedBox(height: 7.h),
-        CheckOutInfo(label: 'Sub-total', value: '£${cartController.total}'),
-        SizedBox(height: 7.h),
-        CheckOutInfo(label: 'Delivery', value: 'Standard (free)'),
-        SizedBox(height: 7.h),
-        CheckOutInfo(label: 'Total', value: '£${cartController.total}', fontSize: 24),
-        SizedBox(height: 24.h),
-        CustomButtom(
-          label: 'Checkout',
-          icon: Icons.arrow_forward,
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => DeliveryScreen()));
-          },
-        ),
-      ],
-    );
-  }
-}
-
-class CheckOutInfo extends StatelessWidget {
-  const CheckOutInfo({
-    Key key,
-    this.fontSize = 16,
-    @required this.label,
-    @required this.value,
-  }) : super(key: key);
-
-  final String label;
-  final String value;
-  final double fontSize;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-              fontSize: fontSize,
-              fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),
-        ),
-        Text(
-          value,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-              fontSize: fontSize,
-              fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),
-        ),
-      ],
     );
   }
 }

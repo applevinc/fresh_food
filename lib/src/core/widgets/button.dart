@@ -35,7 +35,7 @@ class CustomButtom extends StatelessWidget {
             ),
             SizedBox(width: 10.7.w),
             Text(
-              label,
+              label.toUpperCase(),
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w700,

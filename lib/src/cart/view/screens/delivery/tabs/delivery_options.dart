@@ -4,6 +4,7 @@ import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
+import 'package:provider/provider.dart';
 
 const String _standard = 'Standard';
 const String _supersonic = 'Supersonic';
@@ -23,33 +24,36 @@ class _DeliveryOptionsScreenState extends State<DeliveryOptionsScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    return Padding(
-      padding: EdgeInsets.only(top: 23.h, bottom: 30.h),
-      child: Column(
-        children: [
-          _SelectSpeed(),
-          SizedBox(height: 22.h),
-          _Select(
-            label: 'Date',
-            widget: _SelectWidget(label: '14 Oct'),
-          ),
-          SizedBox(height: 22.h),
-          _Select(
-            label: 'Time',
-            widget: _SelectWidget(label: '8:00 am'),
-          ),
-          SizedBox(height: 47.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w),
-            child: CustomButtom(
-              label: 'Continue',
-              icon: Icons.arrow_forward,
-              onTap: () {
-                DefaultTabController.of(context).animateTo(2);
-              },
+    return ChangeNotifierProvider(
+      create: (_) => DeliveryOptionController(),
+      child: Padding(
+        padding: EdgeInsets.only(top: 23.h, bottom: 30.h),
+        child: Column(
+          children: [
+            _SelectSpeed(),
+            SizedBox(height: 22.h),
+            _Select(
+              label: 'Date',
+              widget: _SelectWidget(label: '14 Oct'),
             ),
-          ),
-        ],
+            SizedBox(height: 22.h),
+            _Select(
+              label: 'Time',
+              widget: _SelectWidget(label: '8:00 am'),
+            ),
+            SizedBox(height: 47.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.w),
+              child: CustomButtom(
+                label: 'Continue',
+                icon: Icons.arrow_forward,
+                onTap: () {
+                  DefaultTabController.of(context).animateTo(2);
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -185,22 +189,30 @@ class _SelectSpeed extends StatelessWidget {
             ),
           ),
           SizedBox(height: 25.h),
-          Row(
-            children: [
-              _SelectSpeedContainer(
-                label: _standard,
-                img: AppIcons.delivery,
-                title: 'Standard',
-                subtitle: '2-3 days (free)',
-              ),
-              SizedBox(width: 15.w),
-              _SelectSpeedContainer(
-                label: _supersonic,
-                img: AppIcons.fast_delivery,
-                title: 'Supersonic',
-                subtitle: 'Next day (£4.99)',
-              ),
-            ],
+          Consumer<DeliveryOptionController>(
+            builder: (_, controller, child) {
+              return Row(
+                children: [
+                  _DeliveryOptionContainer(
+                    value: controller.standard,
+                    label: _standard,
+                    img: AppIcons.delivery,
+                    title: 'Standard',
+                    subtitle: '2-3 days (free)',
+                    onTap: controller.toggleStandard,
+                  ),
+                  SizedBox(width: 15.w),
+                  _DeliveryOptionContainer(
+                    value: controller.supersonic,
+                    label: _supersonic,
+                    img: AppIcons.fast_delivery,
+                    title: 'Supersonic',
+                    subtitle: 'Next day (£4.99)',
+                    onTap: controller.toggleSupersonic,
+                  ),
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -208,44 +220,30 @@ class _SelectSpeed extends StatelessWidget {
   }
 }
 
-class _SelectSpeedContainer extends StatefulWidget {
-  const _SelectSpeedContainer({
+class _DeliveryOptionContainer extends StatelessWidget {
+  _DeliveryOptionContainer({
     Key key,
+    @required this.value,
     @required this.label,
     @required this.title,
     @required this.subtitle,
     @required this.img,
+    @required this.onTap,
   }) : super(key: key);
 
+  final bool value;
   final String label;
   final String title;
   final String subtitle;
   final img;
 
-  @override
-  State<_SelectSpeedContainer> createState() => _SelectSpeedContainerState();
-}
-
-class _SelectSpeedContainerState extends State<_SelectSpeedContainer> {
-  bool selected = false;
-
-  void toggle() {
-    if (selected) {
-      selected = false;
-    } else {
-      selected = true;
-    }
-  }
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: GestureDetector(
-        onTap: () {
-          setState(() {
-            toggle();
-          });
-        },
+        onTap: onTap,
         child: Container(
           padding: EdgeInsets.only(top: 26.h, bottom: 15.h),
           decoration: BoxDecoration(
@@ -254,24 +252,24 @@ class _SelectSpeedContainerState extends State<_SelectSpeedContainer> {
           ),
           child: Column(
             children: [
-              Image.asset(widget.img),
+              Image.asset(img),
               SizedBox(height: 15.h),
               Text(
-                widget.title,
+                title,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
-                widget.subtitle,
+                subtitle,
                 style: Theme.of(context)
                     .textTheme
                     .bodyText1
                     .copyWith(color: AppColors.medium_grey),
               ),
               SizedBox(height: 12.h),
-              (selected)
+              (value == true)
                   ? Image.asset(AppIcons.delivery_selected)
                   : Container(
                       width: 24,
@@ -282,7 +280,7 @@ class _SelectSpeedContainerState extends State<_SelectSpeedContainer> {
                             : AppColors.light_grey,
                         shape: BoxShape.circle,
                       ),
-                      child: Text('')),
+                    ),
             ],
           ),
         ),
@@ -291,27 +289,31 @@ class _SelectSpeedContainerState extends State<_SelectSpeedContainer> {
   }
 }
 
-enum DeliveryOption {
-  standard,
-  supersonic,
-}
-
 class DeliveryOptionController extends ChangeNotifier {
-  DeliveryOption deliveryOption = DeliveryOption.standard;
+  bool standard = false;
+  bool supersonic = false;
 
-  void onSelected() {
-    if (deliveryOption == DeliveryOption.standard) {
-      deliveryOption = DeliveryOption.supersonic;
+  void toggleStandard() {
+    if (standard == true) {
+      standard = false;
+      supersonic = true;
       notifyListeners();
     } else {
-      deliveryOption = DeliveryOption.standard;
+      standard = true;
+      supersonic = false;
       notifyListeners();
     }
   }
-}
 
-class DeliveryOptionModel {
-  bool selected = false;
-
-  DeliveryOptionModel({this.selected});
+  void toggleSupersonic() {
+    if (supersonic == true) {
+      supersonic = false;
+      standard = true;
+      notifyListeners();
+    } else {
+      supersonic = true;
+      standard = false;
+      notifyListeners();
+    }
+  }
 }

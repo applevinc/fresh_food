@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fresh_food_ui/src/core/assets/images.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -45,7 +46,14 @@ class _AddCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => _AddCardDetails(),
+          ),
+        );
+      },
       child: Container(
         width: 284.w,
         height: 180.h,
@@ -92,15 +100,81 @@ class _AddCardDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: true,
         title: Text(
           'Add Card',
           style: Theme.of(context).textTheme.headline6,
         ),
-      
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.close),
+          ),
+        ],
       ),
-      body: Column(
-        children: [CustomTextFormField(hintText: 'hintText')],
-      ),
+      body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        var prefixIconColor = AppColors.medium_grey;
+
+        return SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: viewportConstraints.maxHeight,
+            ),
+            child: IntrinsicHeight(
+              child: Column(
+                children: [
+                  SizedBox(height: 30.h),
+                  CustomTextFormField(
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: prefixIconColor,
+                    ),
+                    hintText: 'Cardholder Name',
+                  ),
+                  SizedBox(height: 15.h),
+                  CustomTextFormField(
+                    prefixIcon: Icon(
+                      Icons.credit_card,
+                      color: prefixIconColor,
+                    ),
+                    hintText: 'Card Number',
+                  ),
+                  SizedBox(height: 15.h),
+                  CustomTextFormField(
+                    prefixIcon: Icon(
+                      Icons.date_range,
+                      color: prefixIconColor,
+                    ),
+                    hintText: 'Expiry Date',
+                  ),
+                  SizedBox(height: 15.h),
+                  CustomTextFormField(
+                    prefixIcon: Icon(
+                      Icons.security,
+                      color: prefixIconColor,
+                    ),
+                    hintText: 'Security Code',
+                  ),
+                  Spacer(),
+                  CustomButtom(
+                    label: 'Continue',
+                    icon: Icons.arrow_forward,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  SizedBox(height: 30.h),
+                ],
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }

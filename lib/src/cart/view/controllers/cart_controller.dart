@@ -38,6 +38,11 @@ class CartController extends ChangeNotifier {
     notifyListeners();
   }
 
+  void clear() {
+    _items = [];
+    notifyListeners();
+  }
+
   void _calcTotal() {
     _total = 0;
     for (var item in _items) {

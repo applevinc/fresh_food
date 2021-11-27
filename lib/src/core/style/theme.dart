@@ -65,23 +65,24 @@ class AppTheme {
       scrollbarTheme: ScrollbarThemeData(
         thumbColor: MaterialStateProperty.all(AppColors.darker_grey),
       ),
-      // colorScheme: ColorScheme.fromSwatch(
-      //   primarySwatch: MaterialColor(
-      //     0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
-      //     const <int, Color>{
-      //       50: const Color(0xffE9FAEC), //10%
-      //       100: const Color(0xffDDF9E1), //20%
-      //       200: const Color(0xffD1F7D7), //30%
-      //       300: const Color(0xffC4F6CC), //40%
-      //       400: const Color(0xffB8F4C2), //50%
-      //       500: const Color(0xffACF3B7), //60%
-      //       600: const Color(0xffA0F1AD), //70%
-      //       700: const Color(0xff93F0A2), //80%
-      //       800: const Color(0xff87EE98), //90%
-      //       900: const Color(0xff7BED8D), //100%
-      //     },
-      //   ),
-      // ).copyWith(secondary: AppColors.green),
+      colorScheme: ColorScheme.fromSwatch(
+        brightness: Brightness.light,
+        primarySwatch: MaterialColor(
+          0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+          const <int, Color>{
+            50: const Color(0xffE9FAEC), //10%
+            100: const Color(0xffDDF9E1), //20%
+            200: const Color(0xffD1F7D7), //30%
+            300: const Color(0xffC4F6CC), //40%
+            400: const Color(0xffB8F4C2), //50%
+            500: const Color(0xffACF3B7), //60%
+            600: const Color(0xffA0F1AD), //70%
+            700: const Color(0xff93F0A2), //80%
+            800: const Color(0xff87EE98), //90%
+            900: const Color(0xff7BED8D), //100%
+          },
+        ),
+      ).copyWith(secondary: AppColors.green),
     );
   }
 
@@ -143,25 +144,26 @@ class AppTheme {
           showUnselectedLabels: false,
           type: BottomNavigationBarType.fixed),
       scrollbarTheme: ScrollbarThemeData(
-        
         thumbColor: MaterialStateProperty.all(AppColors.lighter_grey),
       ),
-      // colorScheme: ColorScheme.fromSwatch(
-      //     primarySwatch: MaterialColor(
-      //   0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
-      //   const <int, Color>{
-      //     50: const Color(0xffE9FAEC), //10%
-      //     100: const Color(0xffDDF9E1), //20%
-      //     200: const Color(0xffD1F7D7), //30%
-      //     300: const Color(0xffC4F6CC), //40%
-      //     400: const Color(0xffB8F4C2), //50%
-      //     500: const Color(0xffACF3B7), //60%
-      //     600: const Color(0xffA0F1AD), //70%
-      //     700: const Color(0xff93F0A2), //80%
-      //     800: const Color(0xff87EE98), //90%
-      //     900: const Color(0xff7BED8D), //100%
-      //   },
-      // ),).copyWith(secondary: AppColors.green),
+      colorScheme: ColorScheme.fromSwatch(
+        brightness: Brightness.dark,
+        primarySwatch: MaterialColor(
+          0xff7bed8d, // 0% comes in here, this will be color picked if no shade is selected when defining a Color property which doesn’t require a swatch.
+          const <int, Color>{
+            50: const Color(0xffE9FAEC), //10%
+            100: const Color(0xffDDF9E1), //20%
+            200: const Color(0xffD1F7D7), //30%
+            300: const Color(0xffC4F6CC), //40%
+            400: const Color(0xffB8F4C2), //50%
+            500: const Color(0xffACF3B7), //60%
+            600: const Color(0xffA0F1AD), //70%
+            700: const Color(0xff93F0A2), //80%
+            800: const Color(0xff87EE98), //90%
+            900: const Color(0xff7BED8D), //100%
+          },
+        ),
+      ).copyWith(secondary: AppColors.green),
     );
   }
 }

@@ -21,4 +21,6 @@ class AppIcons {
   static const String summary = "assets/icons/icon-summary.png";
   static const String delivery_selected = "assets/icons/checkbox-selected.png";
   static const String fast_delivery = "assets/icons/icon-fast-delivery.png";
+  static const String orderPlacedLight = "assets/icons/graphic-confirmation-light.png";
+  static const String orderPlacedDark = "assets/icons/graphic-confirmation.png";
 }

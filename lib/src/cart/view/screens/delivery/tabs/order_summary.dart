@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/cart/view/controllers/cart_controller.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/order_placed_screen.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/location.dart';
 import 'package:fresh_food_ui/src/cart/view/widgets/cart_items_listview.dart';
 import 'package:fresh_food_ui/src/cart/view/widgets/checkout.dart';
@@ -42,7 +43,14 @@ class _OrderSummaryScreenState extends State<OrderSummaryScreen> {
               CustomButtom(
                 label: 'Place Order',
                 icon: Icons.arrow_forward,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => OrderPlacedScreen(),
+                    ),
+                  );
+                },
               ),
             ],
           ),

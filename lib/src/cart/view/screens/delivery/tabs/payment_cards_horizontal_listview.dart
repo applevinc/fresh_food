@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/assets/images.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
 
-class PaymentScreen extends StatelessWidget {
-  const PaymentScreen({Key key}) : super(key: key);
+class PaymentCardsHorizontalListView extends StatelessWidget {
+  const PaymentCardsHorizontalListView({
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
+        SizedBox(
+          height: 250.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             physics: BouncingScrollPhysics(),
-            padding: EdgeInsets.symmetric(horizontal: 47.w, vertical: 30.h),
-            itemCount: 5,
+            padding: EdgeInsets.symmetric(horizontal: 30.w),
+            itemCount: 3,
             itemBuilder: (context, index) {
               if (index == 0) {
                 return _AddCard();
@@ -27,12 +30,12 @@ class PaymentScreen extends StatelessWidget {
                 padding: EdgeInsets.only(left: 15.w),
                 child: Image.asset(
                   AppImages.debitCard,
+                  fit: BoxFit.cover,
                 ),
               );
             },
           ),
         ),
-        SizedBox(height: 420.h),
       ],
     );
   }
@@ -56,8 +59,7 @@ class _AddCard extends StatelessWidget {
       },
       child: Container(
         width: 284.w,
-        height: 180.h,
-        alignment: Alignment.center,
+        height: 100.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
           color: AppColors.dark_grey,

@@ -70,3 +70,26 @@ class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+
+class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar1(
+      {Key key, @required this.title, this.automaticallyImplyLeading = false})
+      : super(key: key);
+
+  @override
+  Size get preferredSize => Size.fromHeight(70.h);
+
+  final String title;
+  final bool automaticallyImplyLeading;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: kContainerBottomShadowDecoration(context),
+      child: CustomAppBar(
+        title: title,
+        automaticallyImplyLeading: automaticallyImplyLeading,
+      ),
+    );
+  }
+}

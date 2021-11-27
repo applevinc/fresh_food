@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/delivery_options.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/location.dart';
 import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/order_summary.dart';
-import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/payment.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/cart/view/screens/delivery/tabs/payment_cards_horizontal_listview.dart';
 
 class DeliveryScreen extends StatelessWidget {
   const DeliveryScreen({Key key}) : super(key: key);
@@ -29,7 +30,10 @@ class DeliveryScreen extends StatelessWidget {
           children: [
             LocationScreen(),
             DeliveryOptionsScreen(),
-            PaymentScreen(),
+            Padding(
+              padding: EdgeInsets.only(top: 30.h),
+              child: PaymentCardsHorizontalListView(),
+            ),
             OrderSummaryScreen(),
           ],
         ),

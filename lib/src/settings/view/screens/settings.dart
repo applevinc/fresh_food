@@ -4,6 +4,7 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/settings/view/screens/your_account/your_account.dart';
+import 'package:fresh_food_ui/src/settings/view/screens/your_orders/your_orders.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -35,7 +36,14 @@ class SettingsScreen extends StatelessWidget {
                   CustomListTile(
                     title: 'Your Orders',
                     leading: Icons.list_alt_outlined,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => YourOrdersScreen(),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: 2.h),
                   CustomListTile(

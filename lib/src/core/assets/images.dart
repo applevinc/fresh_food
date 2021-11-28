@@ -9,4 +9,5 @@ class AppImages {
   static const String checkbox = "assets/images/checkbox.png";
   static const String unCheckbox = "assets/images/uncheckbox.png";
   static const String debitCard = "assets/images/debit-card.png";
+  static const String cat = "assets/images/cat.png";
 }

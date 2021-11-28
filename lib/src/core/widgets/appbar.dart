@@ -72,15 +72,19 @@ class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar1(
-      {Key key, @required this.title, this.automaticallyImplyLeading = false})
-      : super(key: key);
+  const CustomAppBar1({
+    Key key,
+    @required this.title,
+    this.automaticallyImplyLeading = false,
+    this.actions,
+  }) : super(key: key);
 
   @override
   Size get preferredSize => Size.fromHeight(70.h);
 
   final String title;
   final bool automaticallyImplyLeading;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +93,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
       child: CustomAppBar(
         title: title,
         automaticallyImplyLeading: automaticallyImplyLeading,
+        actions: actions,
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/settings/view/screens/live_chat/live_chat.dart';
 import 'package:fresh_food_ui/src/settings/view/screens/your_account/your_account.dart';
 import 'package:fresh_food_ui/src/settings/view/screens/your_orders/your_orders.dart';
 
@@ -49,7 +50,14 @@ class SettingsScreen extends StatelessWidget {
                   CustomListTile(
                     title: 'Live Chat',
                     leading: Icons.chat_outlined,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => LiveChatScreen(),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: 2.h),
                   CustomListTile(

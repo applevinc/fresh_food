@@ -1,28 +1,30 @@
-import 'package:fresh_food_ui/src/quick_shop/data/data_sources/mock_data_source.dart';
-import 'package:fresh_food_ui/src/quick_shop/data/data_sources/remote_data_source.dart';
-import 'package:fresh_food_ui/src/quick_shop/data/repositories/shop_repository_impl.dart';
-import 'package:fresh_food_ui/src/quick_shop/domain/repository/shop_repository.dart';
-import 'package:fresh_food_ui/src/quick_shop/domain/usecases/fetch_fruit_items_usecase.dart';
-import 'package:fresh_food_ui/src/quick_shop/view/controllers/fruit_controller.dart';
-import 'package:fresh_food_ui/src/recipe_posts/data/data_sources/mock_data_source.dart';
-import 'package:fresh_food_ui/src/recipe_posts/data/data_sources/remote_data_source.dart';
-import 'package:fresh_food_ui/src/recipe_posts/data/repositories/recipe_posts_repository.dart';
-import 'package:fresh_food_ui/src/recipe_posts/domain/repositories/recipe_posts_repository.dart';
-import 'package:fresh_food_ui/src/recipe_posts/domain/usecases/get_keto_recipe_posts_usecase.dart';
-import 'package:fresh_food_ui/src/recipe_posts/domain/usecases/get_paleo_recipe_posts_usecase.dart';
-import 'package:fresh_food_ui/src/recipe_posts/domain/usecases/get_recipe_posts_usecase.dart';
-import 'package:fresh_food_ui/src/recipe_posts/domain/usecases/get_vegan_recipe_posts_usecase.dart';
-import 'package:fresh_food_ui/src/recipe_posts/view/controllers/get_keto_recipe_posts_controller.dart';
-import 'package:fresh_food_ui/src/recipe_posts/view/controllers/get_paleo_recipe_posts_controller.dart';
-import 'package:fresh_food_ui/src/recipe_posts/view/controllers/get_recipe_posts_controller.dart';
-import 'package:fresh_food_ui/src/recipe_posts/view/controllers/get_vegan_recipe_posts_controller.dart';
-import 'package:fresh_food_ui/src/search/data/data_sources/mock_data_source.dart';
-import 'package:fresh_food_ui/src/search/data/data_sources/remote_data_source.dart';
-import 'package:fresh_food_ui/src/search/data/repositories/search_result_repository_impl.dart';
-import 'package:fresh_food_ui/src/search/domain/repositories/search_result_repository.dart';
-import 'package:fresh_food_ui/src/search/domain/usecases/fetch_product_usecase.dart';
-import 'package:fresh_food_ui/src/search/view/controllers/search_controller.dart';
+
+import 'package:fresh_food_ui/src/data/quick_shop/data_sources/mock_data_source.dart';
+import 'package:fresh_food_ui/src/data/quick_shop/data_sources/remote_data_source.dart';
+import 'package:fresh_food_ui/src/data/quick_shop/repositories/shop_repository_impl.dart';
+import 'package:fresh_food_ui/src/data/recipes/data_sources/mock_data_source.dart';
+import 'package:fresh_food_ui/src/data/recipes/data_sources/remote_data_source.dart';
+import 'package:fresh_food_ui/src/data/recipes/repositories/recipe_posts_repository.dart';
+import 'package:fresh_food_ui/src/domain/quick_shop/repository/shop_repository.dart';
+import 'package:fresh_food_ui/src/domain/quick_shop/usecases/fetch_fruit_items_usecase.dart';
+import 'package:fresh_food_ui/src/domain/recipes/repositories/recipe_posts_repository.dart';
+import 'package:fresh_food_ui/src/domain/recipes/usecases/get_keto_recipe_posts_usecase.dart';
+import 'package:fresh_food_ui/src/domain/recipes/usecases/get_paleo_recipe_posts_usecase.dart';
+import 'package:fresh_food_ui/src/domain/recipes/usecases/get_recipe_posts_usecase.dart';
+import 'package:fresh_food_ui/src/domain/recipes/usecases/get_vegan_recipe_posts_usecase.dart';
+import 'package:fresh_food_ui/src/view/quick_shop/controllers/fruit_controller.dart';
+import 'package:fresh_food_ui/src/view/recipes/controllers/get_keto_recipe_posts_controller.dart';
+import 'package:fresh_food_ui/src/view/recipes/controllers/get_paleo_recipe_posts_controller.dart';
+import 'package:fresh_food_ui/src/view/recipes/controllers/get_recipe_posts_controller.dart';
+import 'package:fresh_food_ui/src/view/recipes/controllers/get_vegan_recipe_posts_controller.dart';
+import 'package:fresh_food_ui/src/view/search/data/data_sources/mock_data_source.dart';
+import 'package:fresh_food_ui/src/view/search/data/data_sources/remote_data_source.dart';
+import 'package:fresh_food_ui/src/view/search/data/repositories/search_result_repository_impl.dart';
+import 'package:fresh_food_ui/src/view/search/domain/usecases/fetch_product_usecase.dart';
+import 'package:fresh_food_ui/src/view/search/view/controllers/search_controller.dart';
 import 'package:get_it/get_it.dart';
+
+import 'view/search/domain/repositories/search_result_repository.dart';
 
 final GetIt backend = GetIt.instance;
 
@@ -64,3 +66,5 @@ void init() async {
 
   // external
 }
+
+

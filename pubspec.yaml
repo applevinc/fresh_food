@@ -33,6 +33,10 @@ dependencies:
   bubble_tab_indicator: ^0.1.5
   tuple: ^2.0.0
   chat_bubbles: ^1.1.0
+  mocktail: ^0.0.1-dev.12
+  multiple_result: ^1.0.4
+  uuid: ^2.2.2
+  
 
 dev_dependencies:
   flutter_test:

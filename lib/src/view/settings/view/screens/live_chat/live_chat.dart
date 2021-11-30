@@ -5,7 +5,7 @@ import 'package:fresh_food_ui/src/view/settings/view/screens/live_chat/component
 import 'package:fresh_food_ui/src/view/settings/view/screens/live_chat/components/message_stream.dart';
 
 class LiveChatScreen extends StatelessWidget {
-  const LiveChatScreen({Key key}) : super(key: key);
+  const LiveChatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

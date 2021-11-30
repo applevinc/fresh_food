@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectRecipePrefView extends StatelessWidget {
-  const SelectRecipePrefView({Key key}) : super(key: key);
+  const SelectRecipePrefView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class SelectRecipePrefView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    recipeNotifier.recipies[index].title,
+                    recipeNotifier.recipies[index].title!,
                     style: Theme.of(context).textTheme.bodyText1,
                   ),
                   Switch(
-                    value: recipeNotifier.recipies[index].isSelected,
+                    value: recipeNotifier.recipies[index].isSelected!,
                     onChanged: (bool value) {
                       recipeNotifier.toggle(index, value);
                     },

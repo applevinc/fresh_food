@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PaleoRecipeScreen extends StatefulWidget {
-  const PaleoRecipeScreen({Key key}) : super(key: key);
+  const PaleoRecipeScreen({Key? key}) : super(key: key);
 
   @override
   State<PaleoRecipeScreen> createState() => _PaleoRecipeScreenState();
 }
 
 class _PaleoRecipeScreenState extends State<PaleoRecipeScreen> {
-  Future<List<RecipeEntity>> _posts;
+  Future<List<RecipeEntity>>? _posts;
 
   @override
   void initState() {

@@ -6,7 +6,7 @@ import 'package:fresh_food_ui/src/view/auth/auth.dart';
 import 'package:fresh_food_ui/src/view/auth/sign_in.dart';
 
 class CreateAccountScreen extends StatelessWidget {
-  const CreateAccountScreen({Key key}) : super(key: key);
+  const CreateAccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class CreateAccountScreen extends StatelessWidget {
           "SIGN IN",
           style: Theme.of(context)
               .textTheme
-              .bodyText1
+              .bodyText1!
               .apply(color: AppColors.medium_grey, fontWeightDelta: 7),
         ),
       ),

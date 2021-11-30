@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class YourPreferencesView extends StatelessWidget {
-  const YourPreferencesView({Key key}) : super(key: key);
+  const YourPreferencesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class YourPreferencesView extends StatelessWidget {
         children: [
           Text(
             'Your Preferences',
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 20.sp),
+            style: Theme.of(context).textTheme.headline4!.copyWith(fontSize: 20.sp),
           ),
           SizedBox(height: 25.h),
           Container(
@@ -47,7 +47,7 @@ class YourPreferencesView extends StatelessWidget {
 
 class _YourPreferencesRow extends StatelessWidget {
   const _YourPreferencesRow(
-      {Key key, @required this.title, @required this.value, @required this.onChanged})
+      {Key? key, required this.title, required this.value, required this.onChanged})
       : super(key: key);
 
   final String title;

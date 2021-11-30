@@ -5,7 +5,7 @@ import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
 
 class EnterMessageField extends StatelessWidget {
   const EnterMessageField({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

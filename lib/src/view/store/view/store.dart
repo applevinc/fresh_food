@@ -9,7 +9,7 @@ import 'package:fresh_food_ui/src/view/search/view/screens/search_view.dart';
 import 'package:fresh_food_ui/src/view/store/data/product_list.dart';
 
 class StoreScreen extends StatelessWidget {
-  const StoreScreen({Key key}) : super(key: key);
+  const StoreScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class StoreScreen extends StatelessWidget {
 
 class _FeatureImageContainer extends StatelessWidget {
   const _FeatureImageContainer({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -67,7 +67,7 @@ class _FeatureImageContainer extends StatelessWidget {
           SizedBox(height: 4.h),
           Text(
             'Browse',
-            style: Theme.of(context).textTheme.bodyText1.apply(
+            style: Theme.of(context).textTheme.bodyText1!.apply(
                   color: AppColors.medium_grey,
                 ),
           )
@@ -79,7 +79,7 @@ class _FeatureImageContainer extends StatelessWidget {
 
 class _FruitsHorizontalListView extends StatelessWidget {
   const _FruitsHorizontalListView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -106,15 +106,15 @@ class _FruitsHorizontalListView extends StatelessWidget {
 
 class _FruitContainer extends StatelessWidget {
   const _FruitContainer({
-    Key key,
+    Key? key,
     this.img,
     this.name,
     this.bgColor,
   }) : super(key: key);
 
-  final String img;
-  final String name;
-  final Color bgColor;
+  final String? img;
+  final String? name;
+  final Color? bgColor;
 
   @override
   Widget build(BuildContext context) {
@@ -135,13 +135,13 @@ class _FruitContainer extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(
-            img,
+            img!,
             height: 133.h,
             width: 133.w,
           ),
           Text(
-            name,
-            style: Theme.of(context).textTheme.bodyText1.apply(
+            name!,
+            style: Theme.of(context).textTheme.bodyText1!.apply(
                   color: Colors.white,
                 ),
           )

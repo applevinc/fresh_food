@@ -10,8 +10,8 @@ import 'package:fresh_food_ui/src/domain/recipes/entities/recipe_entity.dart';
 
 class RecipePostDetailScreen extends StatelessWidget {
   const RecipePostDetailScreen({
-    Key key,
-    @required this.recipeEntity,
+    Key? key,
+    required this.recipeEntity,
   }) : super(key: key);
 
   final RecipeEntity recipeEntity;
@@ -39,7 +39,7 @@ class RecipePostDetailScreen extends StatelessWidget {
         padding: EdgeInsets.only(right: 30.w, left: 30.w, top: 15.h, bottom: 70.h),
         children: [
           Image.asset(
-            recipeEntity.featuredImg,
+            recipeEntity.featuredImg!,
             fit: BoxFit.cover,
           ),
           SizedBox(height: 33.h),
@@ -62,8 +62,8 @@ class RecipePostDetailScreen extends StatelessWidget {
 
 class _Instructions extends StatelessWidget {
   const _Instructions({
-    Key key,
-    @required this.recipeEntity,
+    Key? key,
+    required this.recipeEntity,
   }) : super(key: key);
 
   final RecipeEntity recipeEntity;
@@ -75,12 +75,12 @@ class _Instructions extends StatelessWidget {
       children: [
         Text(
           'Instructions',
-          style: Theme.of(context).textTheme.headline6.copyWith(color: AppColors.green),
+          style: Theme.of(context).textTheme.headline6!.copyWith(color: AppColors.green),
         ),
         SizedBox(height: 24.h),
         Text(
-          recipeEntity.instructions,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
+          recipeEntity.instructions!,
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
                 fontWeight: FontWeight.w500,
               ),
         ),
@@ -91,22 +91,22 @@ class _Instructions extends StatelessWidget {
 
 class _Ingredient extends StatelessWidget {
   const _Ingredient({
-    Key key,
+    Key? key,
     this.recipeEntity,
   }) : super(key: key);
 
-  final RecipeEntity recipeEntity;
+  final RecipeEntity? recipeEntity;
 
   @override
   Widget build(BuildContext context) {
-    var items = recipeEntity.ingredients;
+    var items = recipeEntity!.ingredients!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Ingredients',
-          style: Theme.of(context).textTheme.headline6.copyWith(color: AppColors.green),
+          style: Theme.of(context).textTheme.headline6!.copyWith(color: AppColors.green),
         ),
         SizedBox(height: 19.h),
         Row(
@@ -127,17 +127,17 @@ class _Ingredient extends StatelessWidget {
               children: [
                 RecipeProperty(
                   icon: AppIcons.difficulty,
-                  label: recipeEntity.difficulty,
+                  label: recipeEntity!.difficulty,
                 ),
                 SizedBox(height: 15.h),
                 RecipeProperty(
                   icon: AppIcons.clock,
-                  label: 'Prep ${recipeEntity.prepTime}m',
+                  label: 'Prep ${recipeEntity!.prepTime}m',
                 ),
                 SizedBox(height: 15.h),
                 RecipeProperty(
                   icon: AppIcons.cook,
-                  label: 'Prep ${recipeEntity.cookTime}m',
+                  label: 'Prep ${recipeEntity!.cookTime}m',
                 ),
               ],
             ),
@@ -150,11 +150,11 @@ class _Ingredient extends StatelessWidget {
 
 class _IngredientItem extends StatelessWidget {
   const _IngredientItem({
-    Key key,
+    Key? key,
     this.item,
   }) : super(key: key);
 
-  final String item;
+  final String? item;
 
   @override
   Widget build(BuildContext context) {
@@ -170,7 +170,7 @@ class _IngredientItem extends StatelessWidget {
             Image.asset(AppImages.checkbox),
             SizedBox(width: 15.w),
             Text(
-              item,
+              item!,
               style: Theme.of(context).textTheme.bodyText1,
             ),
           ],
@@ -182,13 +182,13 @@ class _IngredientItem extends StatelessWidget {
 
 class RecipeProperty extends StatelessWidget {
   const RecipeProperty({
-    Key key,
-    @required this.icon,
-    @required this.label,
+    Key? key,
+    required this.icon,
+    required this.label,
   }) : super(key: key);
 
   final String icon;
-  final String label;
+  final String? label;
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +198,7 @@ class RecipeProperty extends StatelessWidget {
         Image.asset(icon),
         SizedBox(width: 15.w),
         Text(
-          label,
+          label!,
           style: Theme.of(context).textTheme.bodyText1,
         ),
       ],

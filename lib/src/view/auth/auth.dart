@@ -7,10 +7,10 @@ import 'package:fresh_food_ui/src/view/onboarding/view/onboarding_view.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({
-    Key key,
-    @required this.title,
-    @required this.form,
-    @required this.action,
+    Key? key,
+    required this.title,
+    required this.form,
+    required this.action,
   }) : super(key: key);
 
   final String title;
@@ -33,7 +33,7 @@ class AuthScreen extends StatelessWidget {
                     title,
                     style: Theme.of(context)
                         .textTheme
-                        .headline5
+                        .headline5!
                         .apply(color: AppColors.green),
                   ),
                   SizedBox(height: 111.h),
@@ -52,9 +52,9 @@ class AuthScreen extends StatelessWidget {
 
 class AuthForm extends StatefulWidget {
   const AuthForm({
-    Key key,
-    @required this.fields,
-    @required this.buttonLabel,
+    Key? key,
+    required this.fields,
+    required this.buttonLabel,
   }) : super(key: key);
 
   final String buttonLabel;
@@ -81,7 +81,7 @@ class _AuthFormState extends State<AuthForm> {
               icon: Icons.arrow_forward,
               onTap: () {
                 // Validate returns true if the form is valid, or false otherwise.
-                if (_formKey.currentState.validate()) {
+                if (_formKey.currentState!.validate()) {
                   // If the form is valid, display a snackbar. In the real world,
                   // you'd often call a server or save the information in a database.
 

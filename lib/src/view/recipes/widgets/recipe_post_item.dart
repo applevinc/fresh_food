@@ -7,8 +7,8 @@ import 'package:fresh_food_ui/src/view/recipes/screens/recipe_post_detail_view.d
 
 class RecipePostItem extends StatelessWidget {
   const RecipePostItem({
-    Key key,
-    @required this.recipeEntity,
+    Key? key,
+    required this.recipeEntity,
   }) : super(key: key);
 
   final RecipeEntity recipeEntity;
@@ -36,7 +36,7 @@ class RecipePostItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              recipeEntity.featuredImg,
+              recipeEntity.featuredImg!,
               fit: BoxFit.cover,
             ),
             Container(
@@ -50,16 +50,16 @@ class RecipePostItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    recipeEntity.name,
+                    recipeEntity.name!,
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1
+                        .bodyText1!
                         .copyWith(fontWeight: FontWeight.w500),
                   ),
                   SizedBox(height: 1.h),
                   Text(
                     'Berries mixed together to make a tasty dish.',
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           fontWeight: FontWeight.w500,
                           fontSize: 14.sp,
                           color: AppColors.medium_grey,

@@ -8,7 +8,7 @@ import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/core/widgets/nutrition_info.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  const ProductDetailScreen({Key key, @required this.product}) : super(key: key);
+  const ProductDetailScreen({Key? key, required this.product}) : super(key: key);
 
   final ProductEntity product;
 
@@ -24,7 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
         padding: EdgeInsets.only(right: 30.w, left: 30.w, top: 15.h, bottom: 70.h),
         children: [
           Image.asset(
-            product.img,
+            product.img!,
             height: 276.h,
             width: 276.w,
           ),
@@ -46,8 +46,8 @@ class ProductDetailScreen extends StatelessWidget {
 
 class _SelectQuantity extends StatelessWidget {
   const _SelectQuantity({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final ProductEntity product;
@@ -71,14 +71,14 @@ class _SelectQuantity extends StatelessWidget {
         children: [
           Text(
             '${product.name}',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
           ),
           SizedBox(width: 35.w),
           Text(
             '2 heads',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   color: AppColors.medium_grey,
                   fontWeight: FontWeight.w500,
                 ),
@@ -86,7 +86,7 @@ class _SelectQuantity extends StatelessWidget {
           SizedBox(width: 27.w),
           Text(
             '£0.80',
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
           ),
@@ -103,7 +103,7 @@ class _SelectQuantity extends StatelessWidget {
 }
 
 class _ProductInfo extends StatelessWidget {
-  const _ProductInfo({Key key, @required this.product}) : super(key: key);
+  const _ProductInfo({Key? key, required this.product}) : super(key: key);
 
   final ProductEntity product;
 
@@ -146,10 +146,10 @@ class _ProductInfo extends StatelessWidget {
 
 class _ProductInfoItem extends StatelessWidget {
   const _ProductInfoItem({
-    Key key,
-    @required this.product,
-    @required this.title,
-    @required this.bodyText,
+    Key? key,
+    required this.product,
+    required this.title,
+    required this.bodyText,
   }) : super(key: key);
 
   final ProductEntity product;
@@ -163,7 +163,7 @@ class _ProductInfoItem extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context).textTheme.headline6.copyWith(color: AppColors.green),
+          style: Theme.of(context).textTheme.headline6!.copyWith(color: AppColors.green),
         ),
         SizedBox(height: 24.h),
         Text(bodyText, style: Theme.of(context).textTheme.bodyText1),

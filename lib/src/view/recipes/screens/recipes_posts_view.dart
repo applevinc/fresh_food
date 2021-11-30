@@ -11,7 +11,7 @@ import 'package:fresh_food_ui/src/view/recipes/widgets/recipe_post_item.dart';
 import 'package:provider/provider.dart';
 
 class RecipesScreen extends StatelessWidget {
-  const RecipesScreen({Key key}) : super(key: key);
+  const RecipesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +51,14 @@ class RecipesScreen extends StatelessWidget {
 }
 
 class AllRecipes extends StatefulWidget {
-  const AllRecipes({Key key}) : super(key: key);
+  const AllRecipes({Key? key}) : super(key: key);
 
   @override
   State<AllRecipes> createState() => _AllRecipesState();
 }
 
 class _AllRecipesState extends State<AllRecipes> {
-  Future<List<RecipeEntity>> _posts;
+  Future<List<RecipeEntity>>? _posts;
 
   @override
   void initState() {

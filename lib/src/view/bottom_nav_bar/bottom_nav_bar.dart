@@ -11,7 +11,7 @@ import 'package:fresh_food_ui/src/view/store/view/store.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key key}) : super(key: key);
+  const BottomNavBar({Key? key}) : super(key: key);
 
   @override
   _BottomNavBarState createState() => _BottomNavBarState();
@@ -77,7 +77,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                             '${cartController.items.length}',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: Colors.white, fontSize: 12.sp),
                           ),
                         ),

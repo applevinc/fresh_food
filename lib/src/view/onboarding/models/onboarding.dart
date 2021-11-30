@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Onboarding {
-  final String img;
-  final String description;
-  final Widget widget;
+  final String? img;
+  final String? description;
+  final Widget? widget;
 
   Onboarding({
     this.img,

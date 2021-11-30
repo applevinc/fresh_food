@@ -9,7 +9,7 @@ import 'package:fresh_food_ui/src/view/cart/widgets/checkout.dart';
 import 'package:provider/provider.dart';
 
 class OrderSummaryScreen extends StatefulWidget {
-  const OrderSummaryScreen({Key key}) : super(key: key);
+  const OrderSummaryScreen({Key? key}) : super(key: key);
 
   @override
   State<OrderSummaryScreen> createState() => _OrderSummaryScreenState();

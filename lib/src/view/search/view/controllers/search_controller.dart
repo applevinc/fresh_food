@@ -9,7 +9,7 @@ enum SearchingStatus {
 }
 
 class SearchController extends ChangeNotifier {
-  final FetchSearchResultUseCase searchResultUseCase;
+  final FetchSearchResultUseCase? searchResultUseCase;
   SearchingStatus searchStatus = SearchingStatus.initial;
 
   SearchController(this.searchResultUseCase);
@@ -17,9 +17,9 @@ class SearchController extends ChangeNotifier {
   List<ProductEntity> _results = [];
   List<ProductEntity> get results => _results;
 
-  Future<List<ProductEntity>> getResults(String query) async {
+  Future<List<ProductEntity>> getResults(String? query) async {
     searchStatus = SearchingStatus.searching;
-    _results = await searchResultUseCase.call(query);
+    _results = await searchResultUseCase!.call(query);
     completed();
     notifyListeners();
     return _results;

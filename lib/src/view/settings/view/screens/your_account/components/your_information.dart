@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class YourInformationView extends StatelessWidget {
-  const YourInformationView({Key key}) : super(key: key);
+  const YourInformationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class YourInformationView extends StatelessWidget {
         children: [
           Text(
             'Your Information',
-            style: Theme.of(context).textTheme.headline4.copyWith(fontSize: 20.sp),
+            style: Theme.of(context).textTheme.headline4!.copyWith(fontSize: 20.sp),
           ),
           SizedBox(height: 25.h),
           Container(
@@ -43,9 +43,9 @@ class YourInformationView extends StatelessWidget {
 
 class _YourInformationRow extends StatelessWidget {
   const _YourInformationRow({
-    Key key,
-    @required this.label,
-    @required this.title,
+    Key? key,
+    required this.label,
+    required this.title,
   }) : super(key: key);
 
   final String label;
@@ -68,7 +68,7 @@ class _YourInformationRow extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyText1!
                     .copyWith(color: AppColors.medium_grey),
               ),
             ],

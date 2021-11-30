@@ -7,7 +7,7 @@ import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
 
 class PaymentCardsHorizontalListView extends StatelessWidget {
   const PaymentCardsHorizontalListView({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -43,7 +43,7 @@ class PaymentCardsHorizontalListView extends StatelessWidget {
 
 class _AddCard extends StatelessWidget {
   const _AddCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -84,7 +84,7 @@ class _AddCard extends StatelessWidget {
             SizedBox(height: 10.h),
             Text(
               'Add Card',
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     fontSize: 14.sp,
                   ),
             )
@@ -96,7 +96,7 @@ class _AddCard extends StatelessWidget {
 }
 
 class _AddCardDetails extends StatelessWidget {
-  const _AddCardDetails({Key key}) : super(key: key);
+  const _AddCardDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

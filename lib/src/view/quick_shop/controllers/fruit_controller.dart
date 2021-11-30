@@ -6,7 +6,7 @@ import 'package:fresh_food_ui/src/view/quick_shop/controllers/shop_controller.da
 class FruitShopController extends ShopController {}
 
 class FruitStoreController extends ChangeNotifier {
-  final FetchFruitItemsUseCase _fetchFruitItemsUseCase;
+  final FetchFruitItemsUseCase? _fetchFruitItemsUseCase;
 
   FruitStoreController(this._fetchFruitItemsUseCase);
 
@@ -14,7 +14,7 @@ class FruitStoreController extends ChangeNotifier {
   List<ShopItemEntity> get items => _store;
 
   Future<List<ShopItemEntity>> fetch() async {
-    _store = await _fetchFruitItemsUseCase.call();
+    _store = await _fetchFruitItemsUseCase!.call();
     return _store;
   }
 

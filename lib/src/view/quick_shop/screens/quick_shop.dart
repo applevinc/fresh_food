@@ -11,7 +11,7 @@ import 'package:fresh_food_ui/src/view/quick_shop/screens/veg_shop_view.dart';
 import 'package:provider/provider.dart';
 
 class QuickShopScreen extends StatelessWidget {
-  const QuickShopScreen({Key key}) : super(key: key);
+  const QuickShopScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class QuickShopScreen extends StatelessWidget {
                     'Added items to cart',
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText1
+                        .bodyText1!
                         .copyWith(color: Colors.white),
                   ),
                   backgroundColor: AppColors.green,
@@ -75,7 +75,7 @@ class QuickShopScreen extends StatelessWidget {
 }
 
 class _AllProductShopScreen extends StatelessWidget {
-  const _AllProductShopScreen({Key key}) : super(key: key);
+  const _AllProductShopScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

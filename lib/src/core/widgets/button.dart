@@ -4,10 +4,10 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class CustomButtom extends StatelessWidget {
   const CustomButtom({
-    Key key,
-    @required this.label,
-    @required this.onTap,
-    @required this.icon,
+    Key? key,
+    required this.label,
+    required this.onTap,
+    required this.icon,
   }) : super(key: key);
 
   final String label;
@@ -17,7 +17,7 @@ class CustomButtom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       child: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(vertical: 20.h),

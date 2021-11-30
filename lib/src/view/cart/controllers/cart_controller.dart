@@ -19,7 +19,7 @@ class CartController extends ChangeNotifier {
   int get total => _total;
 
   void addItem(ProductEntity product) {
-    _items.add(product);
+    _items.add(product as CartEntity);
     notifyListeners();
   }
 
@@ -29,7 +29,7 @@ class CartController extends ChangeNotifier {
       var e = _exist(item);
       if (e.item1) {
         // increase count
-        _items[e.item2].qty = _items[e.item2].qty + item.qty;
+        _items[e.item2!].qty = _items[e.item2!].qty! + item.qty!;
       } else {
         _items.add(_createCartEntity(item));
       }
@@ -46,7 +46,7 @@ class CartController extends ChangeNotifier {
   void _calcTotal() {
     _total = 0;
     for (var item in _items) {
-      _total = _total + item.qty;
+      _total = _total + item.qty!;
     }
   }
 
@@ -59,7 +59,7 @@ class CartController extends ChangeNotifier {
     );
   }
 
-  Tuple2<bool, int> _exist(CartEntity item) {
+  Tuple2<bool, int?> _exist(CartEntity item) {
     for (int i = 0; i < _items.length; i++) {
       if (item.name == _items[i].name) {
         return Tuple2(true, i);

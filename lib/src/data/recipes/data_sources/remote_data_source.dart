@@ -9,7 +9,7 @@ abstract class IRecipePostsRemoteDataSource {
 }
 
 class RecipePostsRemoteDataSource implements IRecipePostsRemoteDataSource {
-  final Dio dio;
+  final Dio? dio;
 
   RecipePostsRemoteDataSource({this.dio});
 

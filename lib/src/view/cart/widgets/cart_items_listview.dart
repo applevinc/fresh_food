@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 
 class CartItemListView extends StatefulWidget {
   const CartItemListView({
-    Key key,
-    @required this.scrollController,
+    Key? key,
+    required this.scrollController,
   }) : super(key: key);
 
   final ScrollController scrollController;
@@ -46,11 +46,11 @@ class _CartItemListViewState extends State<CartItemListView> {
 
 class _Item extends StatelessWidget {
   const _Item({
-    Key key,
+    Key? key,
     this.cartEntity,
   }) : super(key: key);
 
-  final CartEntity cartEntity;
+  final CartEntity? cartEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -65,18 +65,18 @@ class _Item extends StatelessWidget {
       child: Row(
         children: [
           Image.asset(
-            cartEntity.img,
+            cartEntity!.img!,
             height: 46.h,
             width: 46.w,
           ),
           SizedBox(width: 10.w),
           Text(
-            cartEntity.name,
+            cartEntity!.name!,
             style: Theme.of(context).textTheme.bodyText1,
           ),
           Spacer(),
           Text(
-            '£${cartEntity.qty}.00',
+            '£${cartEntity!.qty}.00',
             style: Theme.of(context).textTheme.bodyText1,
           ),
         ],

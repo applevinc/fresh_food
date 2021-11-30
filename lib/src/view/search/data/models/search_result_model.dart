@@ -1,13 +1,13 @@
 import 'package:fresh_food_ui/src/view/search/domain/entities/search_result_entity.dart';
 
 class SearchResultModel extends SearchResultEntity {
-  final String name;
-  final String img;
-  final String description;
-  final String storage;
-  final String origin;
-  final String preparationAndUsage;
-  final Map<String, String> nutritionInfo;
+  final String? name;
+  final String? img;
+  final String? description;
+  final String? storage;
+  final String? origin;
+  final String? preparationAndUsage;
+  final Map<String, String>? nutritionInfo;
 
   SearchResultModel({
     this.name,

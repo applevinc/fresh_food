@@ -8,17 +8,17 @@ class ShopController extends ChangeNotifier {
 
   void add(ShopItemEntity item) {
     if (_items.isEmpty) {
-      item.qty++;
+      item.qty = (item.qty! + 1);
       _items.add(item);
       notifyListeners();
     } else {
       List<ShopItemEntity> copyOfFruitCart = _items;
 
       if (_exist(item, copyOfFruitCart)) {
-        item.qty++;
+        item.qty = (item.qty! + 1);
         notifyListeners();
       } else {
-        item.qty++;
+        item.qty = (item.qty! + 1);
         _items.add(item);
         notifyListeners();
       }
@@ -34,7 +34,7 @@ class ShopController extends ChangeNotifier {
           notifyListeners();
           break;
         } else {
-          item.qty--;
+          item.qty = (item.qty! - 1);
           notifyListeners();
           break;
         }

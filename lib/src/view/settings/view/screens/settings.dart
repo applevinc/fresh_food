@@ -8,7 +8,7 @@ import 'package:fresh_food_ui/src/view/settings/view/screens/your_account/your_a
 import 'package:fresh_food_ui/src/view/settings/view/screens/your_orders/your_orders.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key key}) : super(key: key);
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,10 +90,10 @@ class SettingsScreen extends StatelessWidget {
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
-    Key key,
-    @required this.title,
-    @required this.leading,
-    @required this.onTap,
+    Key? key,
+    required this.title,
+    required this.leading,
+    required this.onTap,
     this.trailing = const Icon(
       Icons.chevron_right,
       color: AppColors.m_medium_grey,
@@ -108,7 +108,7 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       tileColor: isDarkMode(context) ? AppColors.dark_grey : AppColors.lighter_grey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),

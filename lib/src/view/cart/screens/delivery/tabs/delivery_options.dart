@@ -10,7 +10,7 @@ const String _standard = 'Standard';
 const String _supersonic = 'Supersonic';
 
 class DeliveryOptionsScreen extends StatefulWidget {
-  const DeliveryOptionsScreen({Key key}) : super(key: key);
+  const DeliveryOptionsScreen({Key? key}) : super(key: key);
 
   @override
   State<DeliveryOptionsScreen> createState() => _DeliveryOptionsScreenState();
@@ -48,7 +48,7 @@ class _DeliveryOptionsScreenState extends State<DeliveryOptionsScreen>
                 label: 'Continue',
                 icon: Icons.arrow_forward,
                 onTap: () {
-                  DefaultTabController.of(context).animateTo(2);
+                  DefaultTabController.of(context)!.animateTo(2);
                 },
               ),
             ),
@@ -61,9 +61,9 @@ class _DeliveryOptionsScreenState extends State<DeliveryOptionsScreen>
 
 class _Select extends StatelessWidget {
   const _Select({
-    Key key,
-    @required this.label,
-    @required this.widget,
+    Key? key,
+    required this.label,
+    required this.widget,
   }) : super(key: key);
 
   final String label;
@@ -94,8 +94,8 @@ class _Select extends StatelessWidget {
 
 class _SelectWidget extends StatelessWidget {
   const _SelectWidget({
-    Key key,
-    @required this.label,
+    Key? key,
+    required this.label,
   }) : super(key: key);
 
   final String label;
@@ -118,8 +118,8 @@ class _SelectWidget extends StatelessWidget {
 
 class _SelectWidgetItem extends StatefulWidget {
   const _SelectWidgetItem({
-    Key key,
-    @required this.label,
+    Key? key,
+    required this.label,
   }) : super(key: key);
 
   final String label;
@@ -162,10 +162,10 @@ class _SelectWidgetItemState extends State<_SelectWidgetItem> {
         ),
         child: Text(
           widget.label,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
               color: (selected)
                   ? Colors.white
-                  : Theme.of(context).textTheme.bodyText1.color),
+                  : Theme.of(context).textTheme.bodyText1!.color),
         ),
       ),
     );
@@ -173,7 +173,7 @@ class _SelectWidgetItemState extends State<_SelectWidgetItem> {
 }
 
 class _SelectSpeed extends StatelessWidget {
-  const _SelectSpeed({Key key}) : super(key: key);
+  const _SelectSpeed({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -222,13 +222,13 @@ class _SelectSpeed extends StatelessWidget {
 
 class _DeliveryOptionContainer extends StatelessWidget {
   _DeliveryOptionContainer({
-    Key key,
-    @required this.value,
-    @required this.label,
-    @required this.title,
-    @required this.subtitle,
-    @required this.img,
-    @required this.onTap,
+    Key? key,
+    required this.value,
+    required this.label,
+    required this.title,
+    required this.subtitle,
+    required this.img,
+    required this.onTap,
   }) : super(key: key);
 
   final bool value;
@@ -258,14 +258,14 @@ class _DeliveryOptionContainer extends StatelessWidget {
                 title,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyText1!
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
                 subtitle,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyText1!
                     .copyWith(color: AppColors.medium_grey),
               ),
               SizedBox(height: 12.h),

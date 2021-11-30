@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/view/search/data/models/search_result_model.da
 
 class MockSearchResultRemoteDataSourceImpl implements ISearchResultRemoteDataSource {
   @override
-  Future<List<SearchResultModel>> fetchProduct(String query) async {
+  Future<List<SearchResultModel>> fetchProduct(String? query) async {
     await Future.delayed(const Duration(seconds: 5));
     return await Future.value(_searchResults);
   }

@@ -6,8 +6,8 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.actions,
     this.automaticallyImplyLeading = false,
     this.tabs,
@@ -16,9 +16,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final String title;
   final bool automaticallyImplyLeading;
-  final List<Widget> actions;
-  final List<Widget> tabs;
-  final Widget leading;
+  final List<Widget>? actions;
+  final List<Widget>? tabs;
+  final Widget? leading;
 
   @override
   Size get preferredSize => Size.fromHeight((tabs == null) ? 70.h : 150.h);
@@ -49,7 +49,7 @@ class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(90.h);
 
-  final List<Widget> tabs;
+  final List<Widget>? tabs;
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
           indicatorColor: AppColors.green,
           tabBarIndicatorSize: TabBarIndicatorSize.tab,
         ),
-        tabs: tabs,
+        tabs: tabs!,
       ),
     );
   }
@@ -73,8 +73,8 @@ class TabBarContainer extends StatelessWidget implements PreferredSizeWidget {
 
 class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar1({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
     this.automaticallyImplyLeading = false,
     this.actions,
   }) : super(key: key);
@@ -84,7 +84,7 @@ class CustomAppBar1 extends StatelessWidget implements PreferredSizeWidget {
 
   final String title;
   final bool automaticallyImplyLeading;
-  final List<Widget> actions;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {

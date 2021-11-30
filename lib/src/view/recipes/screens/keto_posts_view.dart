@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class KetoRecipeScreen extends StatefulWidget {
-  const KetoRecipeScreen({Key key}) : super(key: key);
+  const KetoRecipeScreen({Key? key}) : super(key: key);
 
   @override
   State<KetoRecipeScreen> createState() => _KetoRecipeScreenState();
 }
 
 class _KetoRecipeScreenState extends State<KetoRecipeScreen> {
-  Future<List<RecipeEntity>> _posts;
+  Future<List<RecipeEntity>>? _posts;
 
   @override
   void initState() {

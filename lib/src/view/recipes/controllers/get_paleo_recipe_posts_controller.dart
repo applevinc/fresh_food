@@ -3,7 +3,7 @@ import 'package:fresh_food_ui/src/domain/recipes/entities/recipe_entity.dart';
 import 'package:fresh_food_ui/src/domain/recipes/usecases/get_paleo_recipe_posts_usecase.dart';
 
 class GetPaleoRecipePostsController extends ChangeNotifier {
-  final GetPaleoRecipePostsUseCase _getPaleoRecipePostsUseCase;
+  final GetPaleoRecipePostsUseCase? _getPaleoRecipePostsUseCase;
 
   GetPaleoRecipePostsController(this._getPaleoRecipePostsUseCase);
 
@@ -12,7 +12,7 @@ class GetPaleoRecipePostsController extends ChangeNotifier {
 
   Future<List<RecipeEntity>> fetch() async {
     try {
-      _posts = await _getPaleoRecipePostsUseCase.call();
+      _posts = await _getPaleoRecipePostsUseCase!.call();
     } catch (e) {
       rethrow;
     }

@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/view/cart/controllers/cart_controller.dart';
 import 'package:provider/provider.dart';
 
 class CheckOut extends StatelessWidget {
-  const CheckOut({Key key}) : super(key: key);
+  const CheckOut({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,10 @@ class CheckOut extends StatelessWidget {
 
 class _CheckOutInfo extends StatelessWidget {
   const _CheckOutInfo({
-    Key key,
+    Key? key,
     this.fontSize = 16,
-    @required this.label,
-    @required this.value,
+    required this.label,
+    required this.value,
   }) : super(key: key);
 
   final String label;
@@ -44,13 +44,13 @@ class _CheckOutInfo extends StatelessWidget {
       children: [
         Text(
           label,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
               fontSize: fontSize,
               fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),
         ),
         Text(
           value,
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
+          style: Theme.of(context).textTheme.bodyText1!.copyWith(
               fontSize: fontSize,
               fontWeight: (fontSize == 16) ? FontWeight.w500 : FontWeight.w400),
         ),

@@ -5,7 +5,7 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class MessageStream extends StatelessWidget {
   const MessageStream({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class MessageStream extends StatelessWidget {
               color: AppColors.green,
               tail: true,
               textStyle:
-                  Theme.of(context).textTheme.bodyText1.copyWith(color: Colors.white),
+                  Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white),
             );
           }
 
@@ -32,7 +32,7 @@ class MessageStream extends StatelessWidget {
             isSender: false,
             color: AppColors.dark_grey,
             tail: true,
-            textStyle: Theme.of(context).textTheme.bodyText1,
+            textStyle: Theme.of(context).textTheme.bodyText1!,
           );
         },
       ),

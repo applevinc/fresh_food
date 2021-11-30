@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    Key key,
-    @required this.hintText,
+    Key? key,
+    required this.hintText,
     this.prefixIcon,
     this.surfixIcon,
   }) : super(key: key);
 
   final String hintText;
-  final Widget prefixIcon;
-  final Widget surfixIcon;
+  final Widget? prefixIcon;
+  final Widget? surfixIcon;
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
 import 'package:fresh_food_ui/src/view/settings/view/screens/your_orders/components/order_expansiontile.dart';
 
 class YourOrdersScreen extends StatelessWidget {
-  const YourOrdersScreen({Key key}) : super(key: key);
+  const YourOrdersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

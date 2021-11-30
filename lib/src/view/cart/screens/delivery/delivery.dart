@@ -8,7 +8,7 @@ import 'package:fresh_food_ui/src/view/cart/screens/delivery/tabs/order_summary.
 import 'package:fresh_food_ui/src/view/cart/screens/delivery/tabs/payment_cards_horizontal_listview.dart';
 
 class DeliveryScreen extends StatelessWidget {
-  const DeliveryScreen({Key key}) : super(key: key);
+  const DeliveryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

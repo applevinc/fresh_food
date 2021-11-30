@@ -6,7 +6,7 @@ import 'package:fresh_food_ui/src/view/settings/view/screens/your_account/compon
 import 'package:fresh_food_ui/src/view/settings/view/screens/your_account/components/your_preferences_view.dart';
 
 class YourAccountScreen extends StatelessWidget {
-  const YourAccountScreen({Key key}) : super(key: key);
+  const YourAccountScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

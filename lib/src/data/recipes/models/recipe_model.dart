@@ -1,14 +1,14 @@
 import 'package:fresh_food_ui/src/domain/recipes/entities/recipe_entity.dart';
 
 class RecipeModel extends RecipeEntity {
-  final String name;
-  final String featuredImg;
-  final List<String> ingredients;
-  final String difficulty;
-  final int prepTime;
-  final int cookTime;
-  final String instructions;
-  final Map<String, String> nutritionInfo;
+  final String? name;
+  final String? featuredImg;
+  final List<String>? ingredients;
+  final String? difficulty;
+  final int? prepTime;
+  final int? cookTime;
+  final String? instructions;
+  final Map<String, String>? nutritionInfo;
 
   RecipeModel({
     this.name,

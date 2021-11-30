@@ -11,7 +11,7 @@ import 'package:fresh_food_ui/src/view/search/view/screens/product_detail_view.d
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatelessWidget {
-  const SearchScreen({Key key}) : super(key: key);
+  const SearchScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,7 @@ class SearchScreen extends StatelessWidget {
 }
 
 class _SearchResultGridView extends StatelessWidget {
-  const _SearchResultGridView({Key key}) : super(key: key);
+  const _SearchResultGridView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +93,8 @@ class _SearchResultGridView extends StatelessWidget {
 
 class _SearchResultItem extends StatelessWidget {
   const _SearchResultItem({
-    Key key,
-    @required this.product,
+    Key? key,
+    required this.product,
   }) : super(key: key);
 
   final ProductEntity product;
@@ -125,9 +125,9 @@ class _SearchResultItem extends StatelessWidget {
             ]),
         child: Column(
           children: [
-            Image.asset(product.img),
+            Image.asset(product.img!),
             SizedBox(height: 13.h),
-            Text(product.name),
+            Text(product.name!),
           ],
         ),
       ),
@@ -136,16 +136,16 @@ class _SearchResultItem extends StatelessWidget {
 }
 
 class _LoadingScreen extends StatefulWidget {
-  const _LoadingScreen({Key key, this.query}) : super(key: key);
+  const _LoadingScreen({Key? key, this.query}) : super(key: key);
 
-  final String query;
+  final String? query;
 
   @override
   __LoadingScreenState createState() => __LoadingScreenState();
 }
 
 class __LoadingScreenState extends State<_LoadingScreen> {
-  Future<List<ProductEntity>> results;
+  Future<List<ProductEntity>>? results;
 
   @override
   void initState() {
@@ -178,7 +178,7 @@ class __LoadingScreenState extends State<_LoadingScreen> {
             alignment: Alignment.center,
             child: Text(
               'Searching for',
-              style: Theme.of(context).textTheme.bodyText1.apply(
+              style: Theme.of(context).textTheme.bodyText1!.apply(
                     color: AppColors.medium_grey,
                   ),
             ),
@@ -187,8 +187,8 @@ class __LoadingScreenState extends State<_LoadingScreen> {
           Align(
             alignment: Alignment.center,
             child: Text(
-              widget.query.toUpperCase(),
-              style: Theme.of(context).textTheme.headline5.apply(
+              widget.query!.toUpperCase(),
+              style: Theme.of(context).textTheme.headline5!.apply(
                     color: AppColors.green,
                   ),
             ),

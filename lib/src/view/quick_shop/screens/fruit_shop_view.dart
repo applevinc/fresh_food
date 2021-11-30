@@ -7,14 +7,14 @@ import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FruitShopScreen extends StatefulWidget {
-  const FruitShopScreen({Key key}) : super(key: key);
+  const FruitShopScreen({Key? key}) : super(key: key);
 
   @override
   State<FruitShopScreen> createState() => _FruitShopScreenState();
 }
 
 class _FruitShopScreenState extends State<FruitShopScreen> {
-  Future<List<ShopItemEntity>> _fruitItems;
+  Future<List<ShopItemEntity>>? _fruitItems;
 
   @override
   void initState() {
@@ -41,8 +41,8 @@ class _FruitShopScreenState extends State<FruitShopScreen> {
 
 class _FruitItemGrid extends StatelessWidget {
   const _FruitItemGrid({
-    Key key,
-    @required this.fruits,
+    Key? key,
+    required this.fruits,
   }) : super(key: key);
 
   final List<ShopItemEntity> fruits;
@@ -72,8 +72,8 @@ class _FruitItemGrid extends StatelessWidget {
 
 class _FruitItem extends StatelessWidget {
   const _FruitItem({
-    Key key,
-    @required this.fruit,
+    Key? key,
+    required this.fruit,
   }) : super(key: key);
 
   final ShopItemEntity fruit;
@@ -85,16 +85,16 @@ class _FruitItem extends StatelessWidget {
     return Column(
       children: [
         Image.asset(
-          fruit.img,
+          fruit.img!,
           width: 42.w,
           height: 40.h,
         ),
         SizedBox(height: 10.h),
         Text(
-          fruit.name,
+          fruit.name!,
           style: Theme.of(context)
               .textTheme
-              .bodyText1
+              .bodyText1!
               .copyWith(fontSize: 14.sp, color: AppColors.medium_grey),
         ),
         SizedBox(height: 11.h),

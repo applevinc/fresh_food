@@ -9,14 +9,14 @@ import 'package:fresh_food_ui/src/view/cart/controllers/cart_controller.dart';
 import 'package:provider/provider.dart';
 
 class OrderPlacedScreen extends StatelessWidget {
-  const OrderPlacedScreen({Key key}) : super(key: key);
+  const OrderPlacedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var cartController = context.watch<CartController>();
     var textTheme = Theme.of(context)
         .textTheme
-        .bodyText1
+        .bodyText1!
         .copyWith(fontSize: 20.sp, fontWeight: FontWeight.w400);
 
     return Scaffold(
@@ -48,7 +48,7 @@ class OrderPlacedScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               '#5678',
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 30.sp, color: AppColors.green, fontWeight: FontWeight.w400),
             ),
           ),

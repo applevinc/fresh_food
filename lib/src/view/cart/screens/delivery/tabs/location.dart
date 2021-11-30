@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({Key key}) : super(key: key);
+  const LocationScreen({Key? key}) : super(key: key);
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -39,8 +39,8 @@ class _LocationScreenState extends State<LocationScreen>
               label: 'Continue',
               icon: Icons.arrow_forward,
               onTap: () {
-                if (_formKey.currentState.validate()) {
-                  DefaultTabController.of(context).animateTo(1);
+                if (_formKey.currentState!.validate()) {
+                  DefaultTabController.of(context)!.animateTo(1);
                 }
               },
             ),
@@ -53,8 +53,8 @@ class _LocationScreenState extends State<LocationScreen>
 
 class CustomTextFormField2 extends StatefulWidget {
   const CustomTextFormField2({
-    Key key,
-    @required this.hintText,
+    Key? key,
+    required this.hintText,
   }) : super(key: key);
 
   final String hintText;

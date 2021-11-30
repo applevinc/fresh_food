@@ -6,7 +6,7 @@ import 'package:fresh_food_ui/src/core/style/constants.dart';
 
 class OrderExpansionTile extends StatelessWidget {
   const OrderExpansionTile({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -40,7 +40,7 @@ class OrderExpansionTile extends StatelessWidget {
                   'Delivery',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1
+                      .bodyText1!
                       .copyWith(color: AppColors.medium_grey),
                 ),
                 SizedBox(width: 27.w),
@@ -61,7 +61,7 @@ class OrderExpansionTile extends StatelessWidget {
 
 class _OrderRowItem extends StatelessWidget {
   const _OrderRowItem({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -79,7 +79,7 @@ class _OrderRowItem extends StatelessWidget {
               '2 heads',
               style: Theme.of(context)
                   .textTheme
-                  .bodyText1
+                  .bodyText1!
                   .copyWith(color: AppColors.medium_grey),
             ),
             SizedBox(width: 27.w),
@@ -96,7 +96,7 @@ class _OrderRowItem extends StatelessWidget {
 
 class _OrderStatus extends StatelessWidget {
   const _OrderStatus({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -111,7 +111,7 @@ class _OrderStatus extends StatelessWidget {
             Text(
               'Shipped',
               style:
-                  Theme.of(context).textTheme.bodyText1.copyWith(color: AppColors.green),
+                  Theme.of(context).textTheme.bodyText1!.copyWith(color: AppColors.green),
             ),
           ],
         ),
@@ -121,7 +121,7 @@ class _OrderStatus extends StatelessWidget {
               'Total',
               style: Theme.of(context)
                   .textTheme
-                  .bodyText1
+                  .bodyText1!
                   .copyWith(color: AppColors.medium_grey),
             ),
             SizedBox(width: 27.w),

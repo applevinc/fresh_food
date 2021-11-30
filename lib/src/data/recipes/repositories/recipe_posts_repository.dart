@@ -1,18 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:fresh_food_ui/src/data/recipes/data_sources/remote_data_source.dart';
 import 'package:fresh_food_ui/src/domain/recipes/entities/recipe_entity.dart';
 import 'package:fresh_food_ui/src/domain/recipes/repositories/recipe_posts_repository.dart';
 
 
 class RecipePostsRepositoryImpl implements IRecipePostsRepository {
-  final IRecipePostsRemoteDataSource recipePostsRemoteDataSource;
+  final IRecipePostsRemoteDataSource? recipePostsRemoteDataSource;
 
-  RecipePostsRepositoryImpl({@required this.recipePostsRemoteDataSource});
+  RecipePostsRepositoryImpl({required this.recipePostsRemoteDataSource});
 
   @override
   Future<List<RecipeEntity>> fetchKetoRecipePost() async {
     try {
-      return await recipePostsRemoteDataSource.fetchKetoRecipePost();
+      return await recipePostsRemoteDataSource!.fetchKetoRecipePost();
     } catch (e) {
       rethrow;
     }
@@ -21,7 +20,7 @@ class RecipePostsRepositoryImpl implements IRecipePostsRepository {
   @override
   Future<List<RecipeEntity>> fetchPaleoRecipePost() async {
     try {
-      return await recipePostsRemoteDataSource.fetchPaleoRecipePost();
+      return await recipePostsRemoteDataSource!.fetchPaleoRecipePost();
     } catch (e) {
       rethrow;
     }
@@ -30,7 +29,7 @@ class RecipePostsRepositoryImpl implements IRecipePostsRepository {
   @override
   Future<List<RecipeEntity>> fetchRecipePosts() async {
     try {
-      return await recipePostsRemoteDataSource.fetchRecipePosts();
+      return await recipePostsRemoteDataSource!.fetchRecipePosts();
     } catch (e) {
       rethrow;
     }
@@ -39,7 +38,7 @@ class RecipePostsRepositoryImpl implements IRecipePostsRepository {
   @override
   Future<List<RecipeEntity>> fetchVeganRecipePost() async {
     try {
-      return await recipePostsRemoteDataSource.fetchVeganRecipePost();
+      return await recipePostsRemoteDataSource!.fetchVeganRecipePost();
     } catch (e) {
       rethrow;
     }

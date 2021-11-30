@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NutritionInfo extends StatelessWidget {
-  const NutritionInfo({Key key, @required this.entity}) : super(key: key);
+  const NutritionInfo({Key? key, required this.entity}) : super(key: key);
 
   final entity;
 
@@ -15,7 +15,7 @@ class NutritionInfo extends StatelessWidget {
       children: [
         Text(
           'Nutritional Information',
-          style: Theme.of(context).textTheme.headline6.copyWith(color: AppColors.green),
+          style: Theme.of(context).textTheme.headline6!.copyWith(color: AppColors.green),
         ),
         Column(
           children: List.generate(entity.nutritionInfo.length, (index) {
@@ -47,14 +47,14 @@ class _NutritionInfoItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            nutritionInfoElement.label,
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            nutritionInfoElement.label!,
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.w500,
                 ),
           ),
           Text(
-            nutritionInfoElement.value,
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
+            nutritionInfoElement.value!,
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontWeight: FontWeight.w500,
                   color: AppColors.medium_grey,
                 ),

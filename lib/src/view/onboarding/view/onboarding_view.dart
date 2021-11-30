@@ -11,7 +11,7 @@ import 'package:fresh_food_ui/src/view/onboarding/view/select_recipe_pref_view.d
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key key}) : super(key: key);
+  const OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +79,8 @@ class _OnboardingPageView extends StatelessWidget {
 
 class _OnboardingPageviewItem extends StatelessWidget {
   const _OnboardingPageviewItem({
-    Key key,
-    @required this.onboardingItem,
+    Key? key,
+    required this.onboardingItem,
   }) : super(key: key);
 
   final Onboarding onboardingItem;
@@ -91,7 +91,7 @@ class _OnboardingPageviewItem extends StatelessWidget {
       children: [
         SizedBox(height: 133.h),
         Image.asset(
-          onboardingItem.img,
+          onboardingItem.img!,
           height: 315.h,
           width: 315.w,
         ),
@@ -99,7 +99,7 @@ class _OnboardingPageviewItem extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
           child: Text(
-            onboardingItem.description,
+            onboardingItem.description!,
             style: Theme.of(context).textTheme.headline6,
             textAlign: TextAlign.center,
           ),
@@ -111,7 +111,7 @@ class _OnboardingPageviewItem extends StatelessWidget {
 }
 
 class _GetStarted extends StatelessWidget {
-  const _GetStarted({Key key}) : super(key: key);
+  const _GetStarted({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -137,8 +137,8 @@ class _GetStarted extends StatelessWidget {
 
 class _Skip extends StatelessWidget {
   const _Skip({
-    Key key,
-    @required this.pageNotifier,
+    Key? key,
+    required this.pageNotifier,
   }) : super(key: key);
 
   final PageNotifier pageNotifier;
@@ -157,7 +157,7 @@ class _Skip extends StatelessWidget {
             "SKIP",
             style: Theme.of(context)
                 .textTheme
-                .bodyText1
+                .bodyText1!
                 .apply(color: AppColors.medium_grey, fontWeightDelta: 7),
           ),
         ),
@@ -169,7 +169,7 @@ class _Skip extends StatelessWidget {
 
 class _PageIndicator extends StatelessWidget {
   const _PageIndicator({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override

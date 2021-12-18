@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fresh_food_ui/src/core/global/failure.dart';
+import 'package:fresh_food_ui/src/core/error/failure.dart';
+import 'package:fresh_food_ui/src/core/value_objects/identity.dart';
 import 'package:fresh_food_ui/src/core/value_objects/title.dart';
+import 'package:fresh_food_ui/src/domain/auth/entities/user.dart';
 import 'package:fresh_food_ui/src/domain/auth/repository/I_user_auth_repository.dart';
 import 'package:fresh_food_ui/src/domain/auth/usecases/register_user_usecase.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/email.dart';
@@ -20,6 +22,7 @@ void main() {
   });
 
   group('RegisterUserUseCase', () {
+    var id = Identity.create('any').getSuccess();
     var name = Title.create('Abe Lenard').getSuccess();
     var email = Email.create('user@gmail.com').getSuccess();
     var password = Password.create('12345678').getSuccess();
@@ -39,12 +42,21 @@ void main() {
           mockUserRepository.register(fullName: name, email: email, password: password));
     });
 
-    test('should return null when registration is successful', () async {
+    test('should return new user when registration is successful', () async {
       //arrange
       when(() => mockUserRepository.register(
-          fullName: name!,
-          email: email!,
-          password: password!)).thenAnswer((_) async => Future.value(Success(null)));
+          fullName: name!, email: email!, password: password!)).thenAnswer(
+        (_) async => Future.value(
+          Success(
+            User(
+              id: id!,
+              fullName: name!,
+              email: email!,
+              password: password!,
+            ),
+          ),
+        ),
+      );
 
       //act
       var result = await sut.execute(fullName: name!, email: email!, password: password!);

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fresh_food_ui/src/core/global/failure.dart';
+import 'package:fresh_food_ui/src/core/error/failure.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/password.dart';
 import 'package:matcher/matcher.dart' as matcher;
 

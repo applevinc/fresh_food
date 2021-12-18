@@ -7,12 +7,12 @@ class User {
   Identity id;
   Title fullName;
   Email email;
-  Password password;
+  Password? password;
 
   User({
     required this.id,
     required this.fullName,
     required this.email,
-    required this.password,
+    this.password,
   });
 }

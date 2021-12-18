@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fresh_food_ui/src/core/value_objects/identity.dart';
 import 'package:fresh_food_ui/src/core/value_objects/title.dart';
 import 'package:fresh_food_ui/src/domain/auth/entities/user.dart';
@@ -9,13 +10,8 @@ class UserFirebaseModel extends User {
     required Identity id,
     required Title fullName,
     required Email email,
-    required Password password,
-  }) : super(
-          id: id,
-          fullName: fullName,
-          email: email,
-          password: password,
-        );
+    Password? password,
+  }) : super(id: id, fullName: fullName, email: email, password: password);
 
   factory UserFirebaseModel.fromJson(Map<String, dynamic> json) {
     return UserFirebaseModel(
@@ -26,8 +22,8 @@ class UserFirebaseModel extends User {
     );
   }
 
-  // factory UserFirebaseModel.fromFirestore(DocumentSnapshot doc) {
-  //   final user = UserFirebaseModel.fromJson(doc.data());
-  //   return user;
-  // }
+  factory UserFirebaseModel.fromFirestore(DocumentSnapshot<Map<String, dynamic>> doc) {
+    final user = UserFirebaseModel.fromJson(doc.data()!);
+    return user;
+  }
 }

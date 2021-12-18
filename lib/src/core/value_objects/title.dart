@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fresh_food_ui/src/core/global/failure.dart';
+import 'package:fresh_food_ui/src/core/error/failure.dart';
 import 'package:multiple_result/multiple_result.dart';
 
 class Title extends Equatable {

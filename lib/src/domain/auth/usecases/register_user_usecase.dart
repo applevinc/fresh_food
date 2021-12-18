@@ -1,4 +1,4 @@
-import 'package:fresh_food_ui/src/core/global/failure.dart';
+import 'package:fresh_food_ui/src/core/error/failure.dart';
 import 'package:fresh_food_ui/src/core/value_objects/title.dart';
 import 'package:fresh_food_ui/src/domain/auth/entities/user.dart';
 import 'package:fresh_food_ui/src/domain/auth/repository/I_user_auth_repository.dart';
@@ -12,7 +12,7 @@ class RegisterUserUseCase {
   RegisterUserUseCase({required IUserAuthRepository userRepository})
       : _userRepository = userRepository;
 
-  Future<Result<Failure, Null>> execute({
+  Future<Result<Failure, User>> execute({
     required Title fullName,
     required Email email,
     required Password password,

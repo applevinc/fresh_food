@@ -1,5 +1,6 @@
 import 'package:fresh_food_ui/src/core/error/exceptions.dart';
 import 'package:fresh_food_ui/src/data/auth/datasources/I_firebaseauth_datasource.dart';
+import 'package:fresh_food_ui/src/data/auth/models/user_firebase_model.dart';
 import 'package:fresh_food_ui/src/domain/auth/entities/user.dart';
 import 'package:fresh_food_ui/src/core/value_objects/title.dart';
 import 'package:fresh_food_ui/src/core/error/failure.dart';
@@ -20,17 +21,8 @@ class UserAuthRepositoryImpl implements IUserAuthRepository {
     required Email email,
     required Password password,
   }) async {
-    try {
-      final user = await _authDatasource.register(
-        fullName: fullName,
-        email: email,
-        password: password,
-      );
-
-      return Success(user);
-    } on ServerException {
-      return Error(ServerFailure('Error Occuried'));
-    }
+    return await _getUser(() =>
+        _authDatasource.register(email: email, password: password, fullName: fullName));
   }
 
   @override
@@ -38,11 +30,14 @@ class UserAuthRepositoryImpl implements IUserAuthRepository {
     required Email email,
     required Password password,
   }) async {
+    return await _getUser(() => _authDatasource.login(email: email, password: password));
+  }
+
+  Future<Result<Failure, User>> _getUser(
+    Future<UserFirebaseModel> Function() loginOrRegister,
+  ) async {
     try {
-      final user = await _authDatasource.login(
-        email: email,
-        password: password,
-      );
+      final user = await loginOrRegister();
 
       return Success(user);
     } on ServerException {

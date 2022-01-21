@@ -42,7 +42,7 @@ void main() {
       //arrange
       when(() => mockUserRepository.login(email: email!, password: password!)).thenAnswer(
           (_) async => Future.value(Success(
-              User(id: userId!, fullName: name!, email: email!, password: password!))));
+              UserEntity(id: userId!, fullName: name!, email: email!, password: password!))));
 
       //act
       var result = await sut.execute(email: email!, password: password!);

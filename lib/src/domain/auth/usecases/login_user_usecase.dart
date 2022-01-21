@@ -11,7 +11,7 @@ class LoginUserUseCase {
   LoginUserUseCase({required IUserAuthRepository userRepository})
       : _userRepository = userRepository;
 
-  Future<Result<Failure, User>> execute({
+  Future<Result<Failure, UserEntity>> execute({
     required Email email,
     required Password password,
   }) async {

@@ -12,7 +12,7 @@ class RegisterUserUseCase {
   RegisterUserUseCase({required IUserAuthRepository userRepository})
       : _userRepository = userRepository;
 
-  Future<Result<Failure, User>> execute({
+  Future<Result<Failure, UserEntity>> execute({
     required Title fullName,
     required Email email,
     required Password password,

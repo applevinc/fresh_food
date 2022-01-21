@@ -16,7 +16,7 @@ class UserAuthRepositoryImpl implements IUserAuthRepository {
       : this._authDatasource = authDatasource;
 
   @override
-  Future<Result<Failure, User>> register({
+  Future<Result<Failure, UserEntity>> register({
     required Title fullName,
     required Email email,
     required Password password,
@@ -26,14 +26,14 @@ class UserAuthRepositoryImpl implements IUserAuthRepository {
   }
 
   @override
-  Future<Result<Failure, User>> login({
+  Future<Result<Failure, UserEntity>> login({
     required Email email,
     required Password password,
   }) async {
     return await _getUser(() => _authDatasource.login(email: email, password: password));
   }
 
-  Future<Result<Failure, User>> _getUser(
+  Future<Result<Failure, UserEntity>> _getUser(
     Future<UserFirebaseModel> Function() loginOrRegister,
   ) async {
     try {

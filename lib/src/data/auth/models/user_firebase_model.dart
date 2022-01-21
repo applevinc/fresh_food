@@ -5,7 +5,7 @@ import 'package:fresh_food_ui/src/domain/auth/entities/user.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/email.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/password.dart';
 
-class UserFirebaseModel extends User {
+class UserFirebaseModel extends UserEntity {
   UserFirebaseModel({
     required Identity id,
     required Title fullName,

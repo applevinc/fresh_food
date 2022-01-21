@@ -35,7 +35,7 @@ void main() {
       email: email!,
       password: password!,
     );
-    final User tUser = tUserModel;
+    final UserEntity tUser = tUserModel;
 
     group('Register', () {
       test('should return User when registration is successful', () async {
@@ -78,6 +78,7 @@ void main() {
         expect(result.isError(), true);
       });
     });
+
     group('Login', () {
       test('should return User when login is successful', () async {
         // arrange

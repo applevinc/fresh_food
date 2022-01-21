@@ -48,7 +48,7 @@ void main() {
           fullName: name!, email: email!, password: password!)).thenAnswer(
         (_) async => Future.value(
           Success(
-            User(
+            UserEntity(
               id: id!,
               fullName: name!,
               email: email!,

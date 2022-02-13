@@ -10,7 +10,7 @@ import 'package:fresh_food_ui/src/domain/auth/value_objects/password.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:multiple_result/multiple_result.dart';
 
-class MockUserRepository extends Mock implements IUserAuthRepository {}
+class MockUserRepository extends Mock implements IAuthRepository {}
 
 void main() {
   late RegisterUserUseCase sut;
@@ -18,7 +18,7 @@ void main() {
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    sut = RegisterUserUseCase(userRepository: mockUserRepository);
+    sut = RegisterUserUseCase(authRepository: mockUserRepository);
   });
 
   group('RegisterUserUseCase', () {

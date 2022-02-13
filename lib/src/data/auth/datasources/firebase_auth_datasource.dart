@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fresh_food_ui/src/core/error/exceptions.dart';
 import 'package:fresh_food_ui/src/core/error/failure.dart';
 import 'package:fresh_food_ui/src/core/value_objects/identity.dart';
 import 'package:fresh_food_ui/src/core/value_objects/title.dart';
@@ -60,13 +61,13 @@ class FirebaseAuthDatasource implements IFirebaseAuthDatasource {
       return _createUserInFirestore(newUser: userCredential.user!, name: fullName.value);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        throw ServerFailure('The password provided is too weak.');
+        throw Exception('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        throw ServerFailure('The account already exists for that email.');
+        throw Exception('The account already exists for that email.');
       } else if (e.code == 'invalid-email') {
-        throw ServerFailure('Email address not valid');
+        throw Exception('Email address not valid');
       } else {
-        throw ServerFailure('An error occuried');
+        throw Exception('An error occuried');
       }
     }
   }

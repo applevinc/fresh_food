@@ -6,16 +6,16 @@ import 'package:fresh_food_ui/src/domain/auth/value_objects/password.dart';
 import 'package:multiple_result/multiple_result.dart';
 
 class LoginUserUseCase {
-  final IUserAuthRepository _userRepository;
+  final IAuthRepository _authRepository;
 
-  LoginUserUseCase({required IUserAuthRepository userRepository})
-      : _userRepository = userRepository;
+  LoginUserUseCase({required IAuthRepository authRepository})
+      : _authRepository = authRepository;
 
   Future<Result<Failure, UserEntity>> execute({
     required Email email,
     required Password password,
   }) async {
-    return await _userRepository.login(
+    return await _authRepository.login(
       email: email,
       password: password,
     );

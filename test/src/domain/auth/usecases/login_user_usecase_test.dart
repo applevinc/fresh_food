@@ -16,7 +16,7 @@ void main() {
 
   setUp(() {
     mockUserRepository = MockUserRepository();
-    sut = LoginUserUseCase(userRepository: mockUserRepository);
+    sut = LoginUserUseCase(authRepository: mockUserRepository);
   });
 
   group('LoginUserUseCase', () {

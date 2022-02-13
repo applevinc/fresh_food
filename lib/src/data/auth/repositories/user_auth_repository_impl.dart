@@ -9,7 +9,7 @@ import 'package:multiple_result/multiple_result.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/password.dart';
 import 'package:fresh_food_ui/src/domain/auth/value_objects/email.dart';
 
-class UserAuthRepositoryImpl implements IUserAuthRepository {
+class UserAuthRepositoryImpl implements IAuthRepository {
   final IFirebaseAuthDatasource _authDatasource;
 
   UserAuthRepositoryImpl({required IFirebaseAuthDatasource authDatasource})
@@ -41,7 +41,7 @@ class UserAuthRepositoryImpl implements IUserAuthRepository {
 
       return Success(user);
     } on ServerException {
-      return Error(ServerFailure('Error Occuried'));
+      rethrow;
     }
   }
 }

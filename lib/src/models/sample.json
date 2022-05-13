@@ -1,0 +1,78 @@
+{
+    "name": "name",
+    "imgUrl": "url",
+    "ingredient": [
+        {
+            "value": "1 Strawberry"
+        },
+        {
+            "value": "1 Strawberry"
+        }
+    ],
+    "instructions": "instruction",
+    "difficulty": "easy",
+    "preparationTime": 20,
+    "cookTime": 5,
+    "nutrient": [
+        {
+            "title": "Serving Size",
+            "value": 0
+        },
+        {
+            "title": "calories",
+            "value": 0
+        },
+        {
+            "title": "protein",
+            "value": 0
+        },
+        {
+            "title": "calories",
+            "value": 0
+        },
+        {
+            "title": "carbohydrates",
+            "value": 0
+        },
+        {
+            "title": "calories",
+            "value": 0
+        },
+        {
+            "title": "sugar",
+            "value": 0
+        },
+        {
+            "title": "fiber",
+            "value": 0
+        },
+        {
+            "title": "fat",
+            "value": 0
+        },
+        {
+            "title": "saturated fat",
+            "value": 0
+        },
+        {
+            "title": "cholestorol",
+            "value": 0
+        },
+        {
+            "title": "sodium",
+            "value": 0
+        },
+        {
+            "title": "potassium",
+            "value": 0
+        },
+        {
+            "title": "vitamin A",
+            "value": 0
+        },
+        {
+            "title": "Vitamin C",
+            "value": 0
+        }
+    ]
+}

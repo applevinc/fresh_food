@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 
-class CustomButtom extends StatelessWidget {
-  const CustomButtom({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     Key? key,
     required this.label,
     required this.onTap,

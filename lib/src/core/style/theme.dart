@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static ThemeData get lightTheme {
@@ -16,22 +17,22 @@ class AppTheme {
         unselectedLabelColor: AppColors.medium_grey,
       ),
       textTheme: TextTheme(
-          headline4: TextStyle(
+          headline4: GoogleFonts.poppins(
             color: AppColors.m_medium_grey,
             fontSize: 30.sp,
             fontWeight: FontWeight.w400,
           ),
-          headline5: TextStyle(
+          headline5: GoogleFonts.poppins(
             color: AppColors.m_medium_grey,
             fontSize: 24.sp,
             fontWeight: FontWeight.w400,
           ),
-          headline6: TextStyle(
+          headline6: GoogleFonts.poppins(
             color: AppColors.m_medium_grey,
             fontSize: 20.sp,
             fontWeight: FontWeight.w400,
           ),
-          bodyText1: TextStyle(
+          bodyText1: GoogleFonts.poppins(
             color: AppColors.m_medium_grey,
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,

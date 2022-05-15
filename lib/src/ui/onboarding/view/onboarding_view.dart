@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
-import 'package:fresh_food_ui/src/ui/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:fresh_food_ui/src/core/widgets/bottom_nav_bar.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/pageview_controller.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/recipe_pref_controller.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/models/onboarding.dart';

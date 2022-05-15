@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food_ui/src/enums/food.dart';
 import 'package:fresh_food_ui/src/models/food.dart';
 
 class StoreItem extends Food {
@@ -12,6 +13,7 @@ class StoreItem extends Food {
     required String storage,
     required String origin,
     required String usage,
+    required FoodType type,
     required List<Nutrient> nutrients,
   }) : super(
           name: name,
@@ -21,5 +23,6 @@ class StoreItem extends Food {
           origin: origin,
           nutrients: nutrients,
           usage: usage,
+          type: type,
         );
 }

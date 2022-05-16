@@ -4,7 +4,7 @@ import 'package:fresh_food_ui/src/core/assets/images.dart';
 import 'package:fresh_food_ui/src/core/helpers/navigator.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
-import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/core/widgets/system_navigation/appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/ui/search/controllers/search_controller.dart';
 import 'package:fresh_food_ui/src/ui/search/widgets/search_result_item.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fresh_food_ui/src/core/constants/app_constants.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
-import 'package:fresh_food_ui/src/core/style/constants.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({
@@ -18,31 +18,28 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 707.h,
-              decoration: kContainerBottomShadowDecoration(context),
-              child: Column(
-                children: [
-                  SizedBox(height: 141.h),
-                  Text(
-                    title,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline5!
-                        .apply(color: AppColors.green),
-                  ),
-                  SizedBox(height: 111.h),
-                  form,
-                ],
+      body: SafeArea(
+        child: Container(
+          color: Colors.red,
+          //decoration: kContainerBottomShadowDecoration(context),
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                style:
+                    Theme.of(context).textTheme.headline5!.apply(color: AppColors.green),
               ),
-            ),
-            SizedBox(height: 38.h),
-            action,
-          ],
+              Flexible(child: form),
+            ],
+          ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: defaultPadding,
+        child: action,
       ),
     );
   }

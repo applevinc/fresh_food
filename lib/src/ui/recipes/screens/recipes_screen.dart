@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
-import 'package:fresh_food_ui/src/core/error/failure.dart';
+import 'package:fresh_food_ui/src/models/failure.dart';
 import 'package:fresh_food_ui/src/core/utils/snackbar_notifications.dart';
-import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/core/widgets/system_navigation/appbar.dart';
 import 'package:fresh_food_ui/src/ui/recipes/controllers/recipes_controller.dart';
 import 'package:fresh_food_ui/src/ui/recipes/widgets/recipe_post_item.dart';
 import 'package:provider/provider.dart';

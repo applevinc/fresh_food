@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/assets/icons.dart';
-import 'package:fresh_food_ui/src/core/widgets/appbar.dart';
+import 'package:fresh_food_ui/src/core/widgets/system_navigation/appbar.dart';
 import 'package:fresh_food_ui/src/ui/delivery/tabs/delivery_options.dart';
 import 'package:fresh_food_ui/src/ui/delivery/tabs/location.dart';
 import 'package:fresh_food_ui/src/ui/delivery/tabs/order_summary.dart';

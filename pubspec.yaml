@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_screenutil: ^5.0.1
+  flutter_screenutil: ^5.0.0+2
   provider: ^6.0.1
   equatable: ^2.0.3
   cupertino_icons: ^1.0.4

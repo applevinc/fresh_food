@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "284399031716",
+    "project_id": "fresh-food-73e5c",
+    "storage_bucket": "fresh-food-73e5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:284399031716:android:3dd29b3ac7d9df6b07dd31",
+        "android_client_info": {
+          "package_name": "com.example.fresh_food_ui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "284399031716-hs87rub734r6i66v9picsv5d5m5ubo23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2uuqItGRp8Hgf9mDBMSK-JAwzxW_Ovsc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "284399031716-hs87rub734r6i66v9picsv5d5m5ubo23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

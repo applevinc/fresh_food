@@ -13,8 +13,8 @@ class TextActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
+    return TextButton(
+      onPressed: onTap,
       child: Text(
         label.toUpperCase(),
         textAlign: TextAlign.center,

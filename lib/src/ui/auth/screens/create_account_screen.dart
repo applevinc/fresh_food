@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/constants/app_constants.dart';
 import 'package:fresh_food_ui/src/core/helpers/navigator.dart';
+import 'package:fresh_food_ui/src/core/helpers/validator.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
-import 'package:fresh_food_ui/src/ui/auth/sign_in.dart';
+import 'package:fresh_food_ui/src/ui/auth/screens/sign_in_screen.dart';
 import 'package:fresh_food_ui/src/ui/auth/widgets/text_action_widget.dart';
+import 'package:fresh_food_ui/src/ui/onboarding/view/onboarding_view.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({Key? key}) : super(key: key);
@@ -22,6 +24,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   late TextEditingController _lastNameController;
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
+  bool _showPassword = false;
+
+  void _togglePasswordVisiblity() {
+    setState(() {
+      _showPassword = !_showPassword;
+    });
+  }
 
   @override
   void initState() {
@@ -30,6 +39,12 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     _lastNameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+  }
+
+  Future<void> _createAccount() async {
+    if (_formKey.currentState!.validate()) {
+      AppNavigator.to(context, OnboardingScreen());
+    }
   }
 
   @override
@@ -41,6 +56,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             padding: paddingOnlyHorizontal,
             child: Form(
               key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -83,17 +99,27 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your email';
                           }
+                          if (!Validator.isValidEmail(value)) {
+                            return 'Enter a valid email';
+                          }
                           return null;
                         },
                       ),
                       SizedBox(height: 15.h),
                       CustomTextFormField(
                         controller: _passwordController,
-                        obscureText: true,
+                        obscureText: _showPassword,
                         labelText: "Password",
+                        surfixIcon: PasswordVisibilityIcon(
+                          visible: _showPassword,
+                          onTap: _togglePasswordVisiblity,
+                        ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
+                          }
+                          if (!PasswordValidator.isCorrectLength(value)) {
+                            return PasswordValidator.message;
                           }
                           return null;
                         },
@@ -117,9 +143,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               child: CustomButton(
                 label: 'Create Account',
                 icon: Icons.arrow_forward,
-                onTap: () {
-                  AppNavigator.to(context, SignInScreen());
-                },
+                onTap: _createAccount,
               ),
             ),
             SizedBox(height: 30.h),

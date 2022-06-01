@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class AppColors {
+  AppColors._();
+
   static const Color white = const Color(0xffffffff);
   static const Color medium_grey = const Color(0xffa6bcd0);
   static const Color green = const Color(0xff7bed8d);

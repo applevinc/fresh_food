@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/src/core/style/colors.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -11,38 +10,32 @@ class CustomButton extends StatelessWidget {
   }) : super(key: key);
 
   final String label;
-  final Function onTap;
+  final Function() onTap;
   final IconData icon;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap as void Function()?,
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 20.h),
-        decoration: BoxDecoration(
-          color: AppColors.green,
+    final size = MediaQuery.of(context).size;
+
+    return ElevatedButton.icon(
+      onPressed: onTap,
+      style: ElevatedButton.styleFrom(
+        fixedSize: Size(size.width, 50.h),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(36),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              icon,
-              size: 25.sp,
+      ),
+      icon: Icon(
+        icon,
+        size: 25.h,
+        color: Colors.white,
+      ),
+      label: Text(
+        label.toUpperCase(),
+        style: Theme.of(context).textTheme.button!.copyWith(
               color: Colors.white,
+              fontWeight: FontWeight.w700,
             ),
-            SizedBox(width: 10.7.w),
-            Text(
-              label.toUpperCase(),
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

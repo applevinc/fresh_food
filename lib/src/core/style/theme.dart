@@ -16,45 +16,27 @@ class AppTheme {
       tabBarTheme: TabBarTheme(
         unselectedLabelColor: AppColors.medium_grey,
       ),
-      textTheme: TextTheme(
-          headline4: GoogleFonts.poppins(
-            color: AppColors.m_medium_grey,
-            fontSize: 30.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          headline5: GoogleFonts.poppins(
-            color: AppColors.m_medium_grey,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          headline6: GoogleFonts.poppins(
-            color: AppColors.m_medium_grey,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          bodyText1: GoogleFonts.poppins(
-            color: AppColors.m_medium_grey,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-          )),
+      textTheme: GoogleFonts.poppinsTextTheme(),
       inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
-          hintStyle: TextStyle(
-            color: AppColors.medium_grey,
-            fontSize: 16.sp,
-          ),
-          filled: true,
-          fillColor: AppColors.lighter_grey,
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(8),
-          )),
+        contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
+        hintStyle: TextStyle(
+          color: AppColors.medium_grey,
+          fontSize: 16.sp,
+        ),
+        filled: true,
+        fillColor: AppColors.lighter_grey,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
       buttonTheme: ButtonThemeData(
-          buttonColor: AppColors.green,
-          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 315.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(36.r)),
-          )),
+        buttonColor: AppColors.green,
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 315.w),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(36.r)),
+        ),
+      ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
           elevation: 0.0,
@@ -97,45 +79,27 @@ class AppTheme {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
-      textTheme: TextTheme(
-          headline4: TextStyle(
-            color: AppColors.m_medium_grey,
-            fontSize: 30.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          headline5: TextStyle(
-            color: AppColors.m_medium_grey,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          headline6: TextStyle(
-            color: AppColors.m_medium_grey,
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          bodyText1: TextStyle(
-            color: AppColors.m_medium_grey,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-          )),
+      textTheme: GoogleFonts.poppinsTextTheme(),
       buttonTheme: ButtonThemeData(
-          buttonColor: AppColors.green,
-          padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 315.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(36.r)),
-          )),
+        buttonColor: AppColors.green,
+        padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 315.w),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(36.r)),
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
-          hintStyle: TextStyle(
-            color: AppColors.medium_grey,
-            fontSize: 16.sp,
-          ),
-          filled: true,
-          fillColor: AppColors.dark_grey,
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(8),
-          )),
+        contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
+        hintStyle: GoogleFonts.poppins(
+          color: AppColors.medium_grey,
+          fontSize: 16.sp,
+        ),
+        filled: true,
+        fillColor: AppColors.dark_grey,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: AppColors.darker_grey,
           elevation: 0.0,

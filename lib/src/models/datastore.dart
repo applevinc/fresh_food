@@ -1,5 +1,5 @@
-import 'package:fresh_food_ui/src/models/user.dart';
+import 'package:fresh_food_ui/src/models/customer.dart';
 
 class DataStore {
-  static User? currentUser;
+  static Customer? currentCustomer;
 }

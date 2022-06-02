@@ -5,11 +5,15 @@ import 'package:fresh_food_ui/src/core/helpers/navigator.dart';
 import 'package:fresh_food_ui/src/core/helpers/validator.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
+import 'package:fresh_food_ui/src/core/utils/snackbar_notifications.dart';
 import 'package:fresh_food_ui/src/core/widgets/button.dart';
 import 'package:fresh_food_ui/src/core/widgets/textfield.dart';
+import 'package:fresh_food_ui/src/models/failure.dart';
+import 'package:fresh_food_ui/src/ui/auth/controllers/auth_controller.dart';
 import 'package:fresh_food_ui/src/ui/auth/screens/create_account_screen.dart';
 import 'package:fresh_food_ui/src/ui/auth/widgets/text_action_widget.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/view/onboarding_view.dart';
+import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -39,7 +43,18 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Future<void> _signIn() async {
     if (_formKey.currentState!.validate()) {
-      AppNavigator.to(context, OnboardingScreen());
+      final controller = context.read<AuthController>();
+
+      try {
+        await controller.signIn(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim(),
+        );
+        NotificationMessages.showSuccess('Login successful');
+        AppNavigator.to(context, OnboardingScreen());
+      } on Failure catch (e) {
+        NotificationMessages.showError(e.message);
+      }
     }
   }
 
@@ -109,10 +124,15 @@ class _SignInScreenState extends State<SignInScreen> {
             Container(
               decoration: kContainerBottomShadowDecoration(context),
               padding: EdgeInsets.only(bottom: 30.h, right: 20.w, left: 20.w),
-              child: CustomButton(
-                label: 'Sign In',
-                icon: Icons.arrow_forward,
-                onTap: _signIn,
+              child: Consumer<AuthController>(
+                builder: (BuildContext context, controller, Widget? child) {
+                  return CustomButton(
+                    label: 'Sign In',
+                    icon: Icons.arrow_forward,
+                    isLoading: controller.isLoading,
+                    onTap: _signIn,
+                  );
+                },
               ),
             ),
             SizedBox(height: 30.h),

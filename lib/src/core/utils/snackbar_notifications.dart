@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresh_food_ui/src/core/helpers/extensons.dart';
 import 'package:get/get.dart';
 
 class NotificationMessages {
@@ -8,7 +9,7 @@ class NotificationMessages {
   }) {
     Get.snackbar(
       "Success",
-      message,
+      message.toTitleCase(),
       backgroundColor: Colors.green.withOpacity(.4),
       duration: duration,
     );
@@ -20,7 +21,7 @@ class NotificationMessages {
   }) {
     Get.snackbar(
       "Error",
-      message,
+      message.toTitleCase(),
       backgroundColor: Colors.red.withOpacity(.4),
       duration: duration,
     );

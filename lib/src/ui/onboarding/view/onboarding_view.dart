@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
-import 'package:fresh_food_ui/src/core/widgets/button.dart';
-import 'package:fresh_food_ui/src/core/widgets/system_navigation/bottom_nav_bar.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/pageview_controller.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/recipe_pref_controller.dart';
-import 'package:fresh_food_ui/src/ui/onboarding/models/onboarding.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/view/select_recipe_pref_view.dart';
+import 'package:fresh_food_ui/src/ui/onboarding/widgets/get_started_button.dart';
+import 'package:fresh_food_ui/src/ui/onboarding/widgets/onboarding_page_view_item.dart';
+import 'package:fresh_food_ui/src/ui/onboarding/widgets/skip_textbutton.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -21,9 +21,6 @@ class OnboardingScreen extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => RecipePrefController()),
       ],
       builder: (context, child) {
-        var pageNotifier = context.watch<OnboardingController>();
-        var lastOnboardingItemIndex = pageNotifier.onboardingList.length;
-
         return Scaffold(
           body: Column(
             children: [
@@ -39,9 +36,17 @@ class OnboardingScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              (pageNotifier.pageNo != lastOnboardingItemIndex)
-                  ? _Skip(pageNotifier: pageNotifier)
-                  : _GetStarted(),
+              Consumer<OnboardingController>(
+                builder: (BuildContext context, controller, Widget? child) {
+                  final lastOnboardingItemIndex = controller.onboardingList.length;
+
+                  if (controller.pageNo != lastOnboardingItemIndex) {
+                    return SkipTextButton(controller: controller);
+                  }
+
+                  return GetStartedButton();
+                },
+              ),
             ],
           ),
         );
@@ -64,7 +69,7 @@ class _OnboardingViewSection extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index < pageNotifier.onboardingList.length) {
             var onboardingItem = pageNotifier.onboardingList[index];
-            return _OnboardingPageviewItem(onboardingItem: onboardingItem);
+            return OnboardingPageviewItem(item: onboardingItem);
           }
 
           return SelectRecipePrefView();
@@ -73,96 +78,6 @@ class _OnboardingViewSection extends StatelessWidget {
           pageNotifier.nextPage(value);
         },
       ),
-    );
-  }
-}
-
-class _OnboardingPageviewItem extends StatelessWidget {
-  const _OnboardingPageviewItem({
-    Key? key,
-    required this.onboardingItem,
-  }) : super(key: key);
-
-  final Onboarding onboardingItem;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 133.h),
-        Image.asset(
-          onboardingItem.img,
-          height: 315.h,
-          width: 315.w,
-        ),
-        SizedBox(height: 70.h),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Text(
-            onboardingItem.description,
-            style: Theme.of(context).textTheme.headline6,
-            textAlign: TextAlign.center,
-          ),
-        ),
-        SizedBox(height: 63.h),
-      ],
-    );
-  }
-}
-
-class _GetStarted extends StatelessWidget {
-  const _GetStarted({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: Column(
-        children: [
-          SizedBox(height: 20.h),
-          CustomButton(
-            label: "GET STARTED",
-            icon: Icons.arrow_forward,
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => BottomNavBar()));
-            },
-          ),
-          SizedBox(height: 30.h),
-        ],
-      ),
-    );
-  }
-}
-
-class _Skip extends StatelessWidget {
-  const _Skip({
-    Key? key,
-    required this.pageNotifier,
-  }) : super(key: key);
-
-  final OnboardingController pageNotifier;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 53.h),
-        InkWell(
-          onTap: () {
-            // go to last page view.
-            pageNotifier.skip();
-          },
-          child: Text(
-            "SKIP",
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1!
-                .apply(color: AppColors.medium_grey, fontWeightDelta: 7),
-          ),
-        ),
-        SizedBox(height: 45.h),
-      ],
     );
   }
 }
@@ -182,7 +97,7 @@ class _OnboardingIndicator extends StatelessWidget {
         pageNotifier.onboardingList.length + 1,
         (index) => AnimatedContainer(
           duration: Duration(milliseconds: 100),
-          margin: EdgeInsets.symmetric(horizontal: 10.w),
+          margin: EdgeInsets.symmetric(horizontal: 5.w),
           height: 10.h,
           width: 10.w,
           decoration: BoxDecoration(

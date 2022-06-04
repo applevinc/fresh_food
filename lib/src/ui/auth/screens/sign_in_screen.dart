@@ -26,11 +26,11 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
-  bool _showPassword = false;
+  bool _hidePassword = true;
 
   void _togglePasswordVisiblity() {
     setState(() {
-      _showPassword = !_showPassword;
+      _hidePassword = !_hidePassword;
     });
   }
 
@@ -94,10 +94,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   SizedBox(height: 15.h),
                   CustomTextFormField(
                     controller: _passwordController,
-                    obscureText: _showPassword,
+                    obscureText: _hidePassword,
                     labelText: "Password",
                     surfixIcon: PasswordVisibilityIcon(
-                      visible: _showPassword,
+                      visible: _hidePassword,
                       onTap: _togglePasswordVisiblity,
                     ),
                     validator: (value) {

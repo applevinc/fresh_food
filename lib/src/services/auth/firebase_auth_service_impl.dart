@@ -43,6 +43,7 @@ class FirebaseAuthServiceImpl implements AuthService {
           firstName: newCustomer.firstName,
           lastName: newCustomer.lastName,
           email: newCustomer.email,
+          recipePrefs: newCustomer.recipePrefs,
         );
       }
     } on FirebaseAuthException catch (e) {

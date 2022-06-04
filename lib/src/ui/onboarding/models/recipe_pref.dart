@@ -1,6 +1,10 @@
-class RecipePref {
-  final String? title;
-  bool? isSelected;
+import 'package:fresh_food_ui/src/models/customer.dart';
 
-  RecipePref({this.title, this.isSelected});
+class RecipePrefModel extends RecipePref {
+  late bool isSelected;
+
+  RecipePrefModel({
+    required super.title,
+    this.isSelected = false,
+  });
 }

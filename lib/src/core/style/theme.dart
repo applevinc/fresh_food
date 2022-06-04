@@ -16,7 +16,10 @@ class AppTheme {
       tabBarTheme: TabBarTheme(
         unselectedLabelColor: AppColors.medium_grey,
       ),
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: GoogleFonts.poppinsTextTheme().apply(
+        bodyColor: AppColors.m_medium_grey,
+        displayColor: AppColors.m_medium_grey,
+      ),
       inputDecorationTheme: InputDecorationTheme(
         contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
         hintStyle: TextStyle(
@@ -70,7 +73,7 @@ class AppTheme {
   }
 
   static ThemeData get darkTheme {
-    return ThemeData(
+    return ThemeData.dark().copyWith(
       scaffoldBackgroundColor: AppColors.darker_grey,
       brightness: Brightness.dark,
       highlightColor: Colors.transparent,
@@ -79,7 +82,10 @@ class AppTheme {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           iconTheme: IconThemeData(color: AppColors.m_medium_grey)),
-      textTheme: GoogleFonts.poppinsTextTheme(),
+      textTheme: GoogleFonts.poppinsTextTheme().apply(
+        bodyColor: Colors.white,
+        displayColor: Colors.white,
+      ),
       buttonTheme: ButtonThemeData(
         buttonColor: AppColors.green,
         padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 315.w),

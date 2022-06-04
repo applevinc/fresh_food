@@ -3,25 +3,30 @@ import 'package:fresh_food_ui/src/ui/onboarding/models/recipe_pref.dart';
 
 class RecipePrefController extends ChangeNotifier {
   var recipies = [
-    RecipePref(title: "All", isSelected: false),
-    RecipePref(title: "Vegan", isSelected: false),
-    RecipePref(title: "Vegeterian", isSelected: false),
-    RecipePref(title: "Paleo", isSelected: false),
-    RecipePref(title: "Keto", isSelected: false),
-    RecipePref(title: "Low Carb", isSelected: false),
+    RecipePrefModel(title: "All"),
+    RecipePrefModel(title: "Vegan"),
+    RecipePrefModel(title: "Vegeterian"),
+    RecipePrefModel(title: "Paleo"),
+    RecipePrefModel(title: "Keto"),
+    RecipePrefModel(title: "Low Carb"),
   ];
 
   void toggle(int index, bool value) {
     var recipeItem = recipies[index];
     if (index == 0) {
-      selectAll();
+      _selectAll();
       notifyListeners();
     }
     recipeItem.isSelected = value;
     notifyListeners();
   }
 
-  void selectAll() {
+  void _selectAll() {
+    if (recipies[0].isSelected) {
+      recipies[0].isSelected = !recipies[0].isSelected;
+      return;
+    }
+
     for (int i = 0; i < recipies.length; i++) {
       recipies[i].isSelected = true;
     }

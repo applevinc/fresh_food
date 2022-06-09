@@ -54,7 +54,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
         email: _emailController.text.trim(),
-        recipePrefs: [],
       );
 
       try {

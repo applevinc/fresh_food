@@ -27,10 +27,15 @@ class AuthController extends ChangeNotifier {
   }) async {
     try {
       _setIsLoading(true);
-      await _authService.signIn(
+      final userId = await _authService.signIn(
         email: email,
         password: password,
       );
+
+      if (userId != null) {
+        await _profileService.getCustomerData(userId);
+        _setIsLoading(false);
+      }
       _setIsLoading(false);
     } on Failure {
       _setIsLoading(false);

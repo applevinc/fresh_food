@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
+import 'package:fresh_food_ui/src/service_locator.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/pageview_controller.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/controllers/recipe_pref_controller.dart';
 import 'package:fresh_food_ui/src/ui/onboarding/view/select_recipe_pref_view.dart';
@@ -18,36 +19,38 @@ class OnboardingScreen extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => OnboardingController()),
-        ChangeNotifierProvider(create: (_) => RecipePrefController()),
+        ChangeNotifierProvider(create: (_) => serviceLocator<RecipePrefController>()),
       ],
       builder: (context, child) {
         return Scaffold(
           body: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                height: 692.h,
-                decoration: kContainerBottomShadowDecoration(context),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    _OnboardingViewSection(),
-                    _OnboardingIndicator(),
-                    SizedBox(height: 40.h),
-                  ],
+              Expanded(
+                child: Container(
+                  decoration: kContainerBottomShadowDecoration(context),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      _OnboardingViewSection(),
+                      _OnboardingIndicator(),
+                      SizedBox(height: 40.h),
+                    ],
+                  ),
                 ),
               ),
-              Consumer<OnboardingController>(
-                builder: (BuildContext context, controller, Widget? child) {
-                  final lastOnboardingItemIndex = controller.onboardingList.length;
-
-                  if (controller.pageNo != lastOnboardingItemIndex) {
-                    return SkipTextButton(controller: controller);
-                  }
-
-                  return GetStartedButton();
-                },
-              ),
             ],
+          ),
+          bottomNavigationBar: Consumer<OnboardingController>(
+            builder: (BuildContext context, controller, Widget? child) {
+              final lastOnboardingItemIndex = controller.onboardingList.length;
+
+              if (controller.pageNo != lastOnboardingItemIndex) {
+                return SkipTextButton(controller: controller);
+              }
+
+              return GetStartedButton();
+            },
           ),
         );
       },
@@ -60,8 +63,7 @@ class _OnboardingViewSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var pageNotifier = context.watch<OnboardingController>();
 
-    return SizedBox(
-      height: 642.h,
+    return Expanded(
       child: PageView.builder(
         physics: BouncingScrollPhysics(),
         controller: pageNotifier.pageController,

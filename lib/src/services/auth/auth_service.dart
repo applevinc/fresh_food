@@ -1,7 +1,7 @@
 import 'package:fresh_food_ui/src/models/customer.dart';
 
 abstract class AuthService {
-  Future<void> signIn({
+  Future<String?> signIn({
     required String email,
     required String password,
   });

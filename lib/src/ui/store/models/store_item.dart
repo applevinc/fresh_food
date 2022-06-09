@@ -3,10 +3,10 @@ import 'package:fresh_food_ui/src/enums/food.dart';
 import 'package:fresh_food_ui/src/models/food.dart';
 
 class StoreItem extends Food {
-  final Color? backgroundColor;
+  final Color backgroundColor;
 
   StoreItem({
-    this.backgroundColor,
+    required this.backgroundColor,
     required String name,
     required String imgUrl,
     required String description,

@@ -7,15 +7,20 @@ class FirebaseAuthServiceImpl implements AuthService {
   final _auth = FirebaseAuth.instance;
 
   @override
-  Future<void> signIn({
+  Future<String?> signIn({
     required String email,
     required String password,
   }) async {
     try {
-      await _auth.signInWithEmailAndPassword(
+      final userCredential = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      final user = userCredential.user;
+
+      if (user != null) {
+        return user.uid;
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw Failure('No user found for that email.');
@@ -23,6 +28,7 @@ class FirebaseAuthServiceImpl implements AuthService {
         throw Failure('Wrong password provided for that user.');
       }
     }
+    return null;
   }
 
   @override
@@ -43,7 +49,6 @@ class FirebaseAuthServiceImpl implements AuthService {
           firstName: newCustomer.firstName,
           lastName: newCustomer.lastName,
           email: newCustomer.email,
-          recipePrefs: newCustomer.recipePrefs,
         );
       }
     } on FirebaseAuthException catch (e) {

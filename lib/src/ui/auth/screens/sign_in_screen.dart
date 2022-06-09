@@ -46,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
       final controller = context.read<AuthController>();
 
       try {
-        await controller.signIn(
+       final userId = await controller.signIn(
           email: _emailController.text.trim(),
           password: _passwordController.text.trim(),
         );

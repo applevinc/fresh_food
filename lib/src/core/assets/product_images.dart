@@ -1,4 +1,4 @@
-class ProductImages {
+class FoodImages {
   static const String banana = "assets/products/banana.png";
   static const String broccoli = "assets/products/broccoli.png";
   static const String orange_store = "assets/products/orange.png";

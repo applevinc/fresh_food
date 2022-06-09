@@ -9,8 +9,6 @@ class SelectRecipePrefView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var recipeNotifier = context.watch<RecipePrefController>();
-
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 62.h),
       child: Column(
@@ -23,25 +21,31 @@ class SelectRecipePrefView extends StatelessWidget {
           SizedBox(height: 55.h),
           SizedBox(
             height: 306.h,
-            child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
-              itemCount: recipeNotifier.recipies.length,
-              itemBuilder: (context, index) {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      recipeNotifier.recipies[index].title,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    Switch(
-                      value: recipeNotifier.recipies[index].isSelected,
-                      onChanged: (bool value) {
-                        recipeNotifier.toggle(index, value);
-                      },
-                    ),
-                  ],
+            child: Consumer<RecipePrefController>(
+              builder: (BuildContext context, controller, Widget? child) {
+                return ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.symmetric(horizontal: 30.w),
+                  itemCount: controller.recipies.length,
+                  itemBuilder: (context, index) {
+                    final recipe = controller.recipies[index];
+
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          recipe.title,
+                          style: Theme.of(context).textTheme.bodyText1,
+                        ),
+                        Switch(
+                          value: recipe.isSelected,
+                          onChanged: (bool value) {
+                            controller.toggle(index, value);
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
             ),

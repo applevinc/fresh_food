@@ -7,7 +7,7 @@ import 'package:fresh_food_ui/src/ui/cart/controller/cart_controller.dart';
 import 'package:fresh_food_ui/src/ui/quick_shop/screens/quick_shop.dart';
 import 'package:fresh_food_ui/src/ui/recipes/screens/recipes_screen.dart';
 import 'package:fresh_food_ui/src/ui/settings/view/screens/settings.dart';
-import 'package:fresh_food_ui/src/ui/store/store.dart';
+import 'package:fresh_food_ui/src/ui/store/screens/store_screen.dart';
 import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -36,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    var cartController = context.watch<CartController>();
+    final cartController = context.watch<CartController>();
 
     return Scaffold(
       body: _pages.elementAt(_selectedIndex),

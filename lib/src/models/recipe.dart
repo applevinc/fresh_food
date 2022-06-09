@@ -64,3 +64,17 @@ class Ingredient {
         "value": value,
       };
 }
+
+class RecipePref {
+  final String title;
+
+  RecipePref({required this.title});
+
+  factory RecipePref.fromJson(Map<String, dynamic> json) => RecipePref(
+        title: json["recipe"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "recipe": title,
+      };
+}

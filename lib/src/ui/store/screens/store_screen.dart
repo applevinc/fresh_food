@@ -1,17 +1,46 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fresh_food_ui/src/core/assets/icons.dart';
 import 'package:fresh_food_ui/src/core/helpers/navigator.dart';
 import 'package:fresh_food_ui/src/core/style/colors.dart';
 import 'package:fresh_food_ui/src/core/style/constants.dart';
 import 'package:fresh_food_ui/src/core/widgets/system_navigation/appbar.dart';
+import 'package:fresh_food_ui/src/models/failure.dart';
 import 'package:fresh_food_ui/src/ui/search/search_screen.dart';
 import 'package:fresh_food_ui/src/ui/store/controller/store_controller.dart';
 import 'package:fresh_food_ui/src/ui/store/widgets/fruit_container.dart';
 import 'package:provider/provider.dart';
 
-class StoreScreen extends StatelessWidget {
+class StoreScreen extends StatefulWidget {
   const StoreScreen({Key? key}) : super(key: key);
+
+  @override
+  State<StoreScreen> createState() => _StoreScreenState();
+}
+
+class _StoreScreenState extends State<StoreScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      _getStoreData();
+    });
+  }
+
+  _getStoreData() async {
+    final controller = context.read<StoreController>();
+
+    if (controller.foods.isEmpty) {
+      try {
+        await controller.getStore();
+        await controller.getFeatureFood();
+      } on Failure catch (e) {
+        log(e.message);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +54,30 @@ class StoreScreen extends StatelessWidget {
             },
             child: Padding(
               padding: EdgeInsets.only(right: 32.w),
-              child: ImageIcon(AssetImage(AppIcons.search)),
+              child: Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30.sp,
+              ),
             ),
           )
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            _FeatureItemImageSection(),
-            _FruitsHorizontalListViewSection(),
-          ],
+        child: Consumer<StoreController>(
+          builder: (BuildContext context, controller, Widget? child) {
+            if (controller.isLoading) {
+              return Center(child: CircularProgressIndicator());
+            }
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _FeatureItemImageSection(),
+                _FruitsHorizontalListViewSection(),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -58,6 +99,10 @@ class _FeatureItemImageSection extends StatelessWidget {
           Consumer<StoreController>(
             builder: (BuildContext context, controller, Widget? child) {
               final featuredFood = controller.featuredFood;
+
+              if (featuredFood == null) {
+                return SizedBox.shrink();
+              }
 
               return Image.asset(
                 featuredFood.imgUrl,
@@ -94,15 +139,24 @@ class _FruitsHorizontalListViewSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<StoreController>(
       builder: (BuildContext context, controller, Widget? child) {
+        if (controller.isLoading) {
+          return CircularProgressIndicator();
+        }
+
+        if (controller.foods.isEmpty) {
+          return SizedBox.shrink();
+        }
+
+        final foods = controller.foods;
         return SizedBox(
           height: 183.h,
           child: ListView.builder(
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 15.h),
-            itemCount: controller.foods.length,
+            itemCount: foods.length,
             itemBuilder: (context, index) {
-              var fruit = controller.foods[index];
+              final fruit = foods[index];
 
               return FruitContainer(
                 img: fruit.imgUrl,

@@ -10,7 +10,6 @@ void main() async {
   await serviceLocator.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
     SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-
     runApp(MyApp());
   });
 }

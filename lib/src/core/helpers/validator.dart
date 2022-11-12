@@ -2,18 +2,18 @@ import 'package:all_validations_br/all_validations_br.dart';
 
 class Validator {
   static bool isValidEmail(String? value) {
-    if (AllValidations.isEmail(value!)) {
-      return true;
-    } else {
+    if (!AllValidations.isEmail(value!)) {
       return false;
+    } else {
+      return true;
     }
   }
 
   static bool isNumericOnly(String? value) {
-    if (value != null && AllValidations.isNumericOnly(value)) {
-      return true;
-    } else {
+    if (value != null && !AllValidations.isNumericOnly(value)) {
       return false;
+    } else {
+      return true;
     }
   }
 }

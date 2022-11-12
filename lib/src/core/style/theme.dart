@@ -21,7 +21,10 @@ class AppTheme {
         displayColor: AppColors.m_medium_grey,
       ),
       inputDecorationTheme: InputDecorationTheme(
-        contentPadding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 22.7.w),
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 22.h,
+          horizontal: 22.7.w,
+        ),
         hintStyle: TextStyle(
           color: AppColors.medium_grey,
           fontSize: 16.sp,

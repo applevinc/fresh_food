@@ -49,4 +49,8 @@ class RecipePrefController extends ChangeNotifier {
       rethrow;
     }
   }
+
+  void select(RecipePrefModel recipe) {
+    recipe.isSelected = !recipe.isSelected;
+  }
 }
